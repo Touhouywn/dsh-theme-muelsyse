@@ -1,0 +1,624 @@
+/* ==========================================================================
+   Muelsyse · 生态科  —  DeepSeek Harness theme layer
+   --------------------------------------------------------------------------
+   DSH is token-driven: the shell paints itself from `--dsw-*` alias tokens, so
+   this sheet re-expresses the ecological Rhine-Lab palette as token overrides
+   plus a handful of narrowly scoped structural rules.
+
+   Scope: every rule is gated on `body[data-ds-dark-theme]`. The host half
+   forces that attribute while the plugin is mounted, so the theme is dark-only
+   by design and the page falls back to the stock look the moment the plugin is
+   disabled.
+
+   Canvas: the looped workshop film is a fixed <video> painted behind the root
+   (z-index -1). The sidebar (工作栏) is a deep-water glass panel ending in a
+   glass-cyan hairline, while the workspace (工作区) stays transparent so the
+   loop shows through under a soft reading scrim.
+   ========================================================================== */
+
+html { color-scheme: dark; }
+
+/* --------------------------------------------------------------------------
+   1. Palette — deep teal water, glass-cyan accents, bone-white text.
+   -------------------------------------------------------------------------- */
+html body[data-ds-dark-theme] {
+  /* Marker the page-side self-check reads: proves this sheet applied. */
+  --muelsyse-theme: on;
+
+  /* --- canvas ----------------------------------------------------------- */
+  --dsw-alias-bg-base: transparent;
+  --dsw-alias-bg-document-preview: #041014;
+  --dsw-alias-bg-document-selection: color-mix(in srgb, #3fd6c6 30%, transparent);
+
+  /* --- raised surfaces -------------------------------------------------- */
+  --dsw-alias-bg-layer-1: #0b1b1f;
+  --dsw-alias-bg-layer-2: #0f2429;
+  --dsw-alias-bg-layer-3: #143038;
+  --dsw-alias-bg-layer-4: #183a44;
+  --dsw-alias-bg-module-platform: #0e2025;
+  --dsw-alias-bg-multi-select: #0f2429;
+  --dsw-alias-bg-overlay: #143038;
+  --dsw-alias-bg-skeleton: rgba(200, 240, 235, 0.06);
+
+  /* --- sidebar (工作栏) ------------------------------------------------- */
+  --dsw-specific-sidebar-fill: rgba(5, 14, 17, 0);
+  --dsw-specific-sidebar-nav-item-hover: rgba(63, 214, 198, 0.09);
+  --dsw-specific-sidebar-nav-item-active: rgba(63, 214, 198, 0.16);
+  --dsw-specific-sidebar-nav-item-active-accent: rgba(87, 214, 200, 0.24);
+
+  /* --- composer, bubbles, selectors ------------------------------------- */
+  --dsw-specific-input-major: rgba(10, 26, 30, 0.88);
+  --dsw-specific-login-input: rgba(7, 20, 24, 0.94);
+  --dsw-specific-bubble: #11272c;
+  --dsw-specific-bubble-highlight: #1b3a41;
+  --dsw-specific-selector: #143038;
+  --dsw-specific-tip: #143038;
+
+  /* --- text ------------------------------------------------------------- */
+  --dsw-alias-label-primary: #e6f5f2;
+  --dsw-alias-label-primary-dimmed: #eefaf7;
+  --dsw-alias-label-primary-bluish: #d3eef0;
+  --dsw-alias-label-primary-inverted: #06201e;
+  --dsw-alias-label-primary-foreground: #06201e;
+  --dsw-alias-label-secondary: #bcd9d5;
+  --dsw-alias-label-tertiary: #8fb3ae;
+  --dsw-alias-label-caption: #6a8f8a;
+  --dsw-alias-label-dimmed: #436662;
+  --dsw-alias-label-shimmer: rgba(255, 255, 255, 0.42);
+  --dsw-alias-label-deep-diving: color-mix(in srgb, #57d6c8 62%, #436662);
+  --dsw-alias-label-deep-diving-shimmer: color-mix(in srgb, #d3eef0 70%, #57d6c8);
+  --dsw-alias-menu-icon: #9cc2bd;
+
+  /* --- lines ------------------------------------------------------------ */
+  --dsw-alias-border-l1: rgba(87, 214, 200, 0.1);
+  --dsw-alias-border-l2: rgba(87, 214, 200, 0.17);
+  --dsw-alias-border-l2-darkmode-thin: rgba(87, 214, 200, 0.12);
+  --dsw-alias-border-l3: rgba(87, 214, 200, 0.24);
+  --dsw-alias-border-l4: rgba(87, 214, 200, 0.34);
+  --dsw-alias-border-inverted: rgba(4, 16, 20, 0.5);
+  --dsw-alias-border-inverted2: rgba(4, 16, 20, 0.32);
+
+  /* --- brand & buttons -------------------------------------------------- */
+  --dsw-alias-brand-primary: #3fd6c6;
+  --dsw-alias-brand-primary-invert: #05201e;
+  --dsw-alias-brand-text: #d3eef0;
+  --dsw-alias-button-primary-fill: #3fd6c6;
+  --dsw-alias-button-primary-hover: #5fe0d1;
+  --dsw-alias-button-primary-dimmed: #2e6f6a;
+  --dsw-alias-button-contrast-fill: #12333a;
+  --dsw-alias-button-elevated-fill: #143038;
+  --dsw-alias-button-floating-fill: rgba(9, 22, 26, 0.92);
+  --dsw-alias-button-floating-hover: rgba(16, 34, 40, 0.96);
+  --dsw-alias-button-ghost-active-fill: #183a44;
+  --dsw-alias-button-ghost-active-hover: #1e4650;
+  --dsw-alias-button-ghost-active-border: #2e6f6a;
+  --dsw-alias-button-tool-bar-fill: rgba(6, 16, 20, 0.72);
+  --dsw-alias-button-tool-bar-fill-invisible: rgba(6, 16, 20, 0.4);
+  --dsw-alias-button-tool-bar-hover: rgba(20, 40, 46, 0.85);
+
+  /* --- interaction ------------------------------------------------------ */
+  --dsw-alias-interactive-bg-hover: rgba(63, 214, 198, 0.09);
+  --dsw-alias-interactive-bg-active: rgba(63, 214, 198, 0.16);
+  --dsw-alias-interactive-bg-hover-solid: #12333a;
+  --dsw-alias-interactive-bg-hover-accent: rgba(87, 214, 200, 0.16);
+  --dsw-alias-interactive-bg-hover-danger: rgba(224, 138, 166, 0.18);
+  --dsw-alias-link: #57d6c8;
+  --dsw-focus-ring-color: #57d6c8;
+
+  /* --- state ------------------------------------------------------------ */
+  --dsw-alias-state-business-primary: #57d6c8;
+  --dsw-alias-state-business-tertiary: rgba(87, 214, 200, 0.16);
+  --dsw-alias-state-success-primary: #7fd0a6;
+  --dsw-alias-state-success-secondary: #a5e3c6;
+  --dsw-alias-state-success-tertiary: rgba(127, 208, 166, 0.16);
+  --dsw-alias-state-error-primary: #e08aa6;
+  --dsw-alias-state-error-secondary: #b86583;
+  --dsw-alias-state-warn-primary: #d9c08a;
+  --dsw-alias-state-warn-secondary: #e8dcb8;
+  --dsw-alias-state-warn-tertiary: rgba(217, 192, 138, 0.16);
+  --dsw-alias-state-warn-label: #d9c08a;
+  --dsw-alias-state-idle-primary: #3a5560;
+
+  /* --- markdown & code -------------------------------------------------- */
+  --dsw-alias-markdown-code-block: #071419;
+  --dsw-alias-markdown-code-block-banner: #0c2025;
+  --dsw-alias-markdown-code-segment-selected: #14333a;
+  --dsw-alias-markdown-code-segment-unselected: #0c2025;
+  --dsw-alias-markdown-inline-code: #0f2429;
+  --dsw-alias-markdown-citation: #0f2429;
+  --dsw-alias-markdown-placeholder: #0f2429;
+  --dsw-alias-markdown-tag: #0f2429;
+  --dsw-alias-code-diff-added: rgba(127, 208, 166, 0.14);
+  --dsw-alias-code-diff-deleted: rgba(224, 138, 166, 0.14);
+  --dsw-alias-file-diff-added-bg: #0e241e;
+  --dsw-alias-file-diff-added-gutter: #0a1a16;
+  --dsw-alias-file-diff-added-marker: #6fd0a6;
+  --dsw-alias-file-diff-deleted-bg: #26141f;
+  --dsw-alias-file-diff-deleted-gutter: #1a0d15;
+  --dsw-alias-file-diff-deleted-marker: #e08aa6;
+
+  /* --- overlays & chrome ------------------------------------------------ */
+  --dsw-alias-bg-mask-1: rgba(2, 6, 8, 0.56);
+  --dsw-alias-bg-mask-2: rgba(2, 6, 8, 0.26);
+  --dsw-alias-bg-mask-3: rgba(2, 6, 8, 0.64);
+  --dsw-alias-bg-mask-drop: rgba(5, 14, 17, 0.74);
+  --dsw-menu-surface-fill: rgba(11, 27, 31, 0.94);
+  --dsw-alias-menu-group-header-fill: rgba(10, 26, 30, 0.96);
+  --dsw-specific-menu: var(--dsw-menu-surface-fill);
+  --dsw-hovercard-bg: rgba(15, 36, 41, 0.97);
+  --dsw-alias-toast-bg: #12333a;
+  --dsw-alias-toast-label: #e6f5f2;
+  --dsw-alias-tooltip-bg: #12333a;
+  --dsw-alias-tooltip-key-bg: #1e4650;
+  --dsw-alias-turn-trigger-bg: #0c2025;
+  --dsw-alias-turn-trigger-bg-hover: rgba(63, 214, 198, 0.1);
+  --dsw-alias-switch-thumb: #d3eef0;
+
+  /* --- scrollbars ------------------------------------------------------- */
+  --dsw-alias-scrollbar-bg-l1: #33555f;
+  --dsw-alias-scrollbar-hover-l1: #4e7884;
+  --dsw-alias-scrollbar-bg-l2: #3a5c66;
+  --dsw-alias-scrollbar-hover-l2: #5a8290;
+
+  /* --- syntax (shiki) --------------------------------------------------- */
+  --shiki-foreground: #dff0ee;
+  --shiki-background: #071419;
+  --shiki-token-constant: #57d6c8;
+  --shiki-token-string: #a5e3c6;
+  --shiki-token-string-expression: #8fd3c2;
+  --shiki-token-comment: #5f837e;
+  --shiki-token-keyword: #3fd6c6;
+  --shiki-token-parameter: #a9e0dc;
+  --shiki-token-function: #8fd8ef;
+  --shiki-token-punctuation: #7f9a97;
+  --shiki-token-link: #57d6c8;
+}
+
+/* --------------------------------------------------------------------------
+   2. Canvas — the looped workshop film behind the root.
+   -------------------------------------------------------------------------- */
+html body[data-ds-dark-theme] { background-color: transparent; }
+
+html { background-color: #051416; }
+
+#muelsyse-loop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  background: #051416;
+  /* The film is a dark forest with one shaft of light; hold it back so the
+     studio light never wins against the interface. */
+  filter: brightness(0.86) saturate(1.04) contrast(1.03);
+}
+
+/* --------------------------------------------------------------------------
+   3. Workspace (工作区): transparent, so the loop shows under a reading scrim.
+   -------------------------------------------------------------------------- */
+html body[data-ds-dark-theme] [class*="centerCol"] {
+  background:
+    radial-gradient(58% 62% at 40% 46%,
+      rgba(4, 14, 17, 0.62) 0%,
+      rgba(4, 14, 17, 0.5) 44%,
+      rgba(4, 14, 17, 0.24) 76%,
+      rgba(4, 14, 17, 0.08) 100%),
+    linear-gradient(180deg, rgba(4, 14, 17, 0.22), rgba(4, 14, 17, 0.06) 40%, rgba(4, 14, 17, 0.18) 82%, rgba(4, 14, 17, 0.36));
+}
+
+html body[data-ds-dark-theme] [class*="rightbarCol"] {
+  background: linear-gradient(90deg,
+    rgba(4, 14, 17, 0.24) 0%,
+    rgba(4, 14, 17, 0.5) 42%,
+    rgba(4, 14, 17, 0.62) 100%);
+}
+
+/* Code blocks keep an opaque canvas. */
+html body[data-ds-dark-theme] pre,
+html body[data-ds-dark-theme] code {
+  --dsw-alias-bg-base: #071419;
+}
+
+/* --------------------------------------------------------------------------
+   4. Sidebar (工作栏): deep-water glass, lit by a glass-cyan edge hairline
+      and inner rim.
+   -------------------------------------------------------------------------- */
+html body[data-ds-dark-theme] [class*="sidebarCol"] {
+  background:
+    linear-gradient(180deg,
+      rgba(63, 214, 198, 0.10) 0%,
+      rgba(63, 214, 198, 0.04) 34%,
+      rgba(63, 214, 198, 0) 68%),
+    linear-gradient(180deg,
+      rgba(15, 36, 41, 0.94) 0%,
+      rgba(20, 48, 56, 0.92) 34%,
+      rgba(17, 42, 49, 0.92) 68%,
+      rgba(9, 25, 30, 0.94) 100%);
+  border-right: 1px solid rgba(87, 214, 200, 0.28);
+  box-shadow:
+    inset -14px 0 30px -22px rgba(2, 9, 12, 0.88),
+    inset -1px 0 0 rgba(87, 214, 200, 0.18),
+    inset 0 1px 0 rgba(163, 240, 232, 0.12);
+  backdrop-filter: blur(10px) saturate(1.05);
+}
+
+/* --------------------------------------------------------------------------
+   5. Opening shell.
+   -------------------------------------------------------------------------- */
+#muelsyse-opening {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  background: #000;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+#muelsyse-opening .mu-film {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  /* The film carries its own HUD and title near the edges: cover would crop
+     them on a 21:9 or 4:3 window, so the whole frame is kept and the bars
+     are filled with the same ink the film fades to. */
+  object-fit: contain;
+  object-position: center;
+  background: #041014;
+}
+#muelsyse-opening .mu-sound {
+  position: absolute;
+  left: 26px;
+  bottom: 58px;
+  padding: 7px 13px;
+  border: 1px solid rgba(87, 214, 200, 0.4);
+  border-radius: 999px;
+  background: rgba(6, 20, 23, 0.55);
+  color: rgba(214, 245, 240, 0.82);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  backdrop-filter: blur(6px);
+}
+#muelsyse-opening .mu-sound:hover {
+  color: #ffffff;
+  border-color: rgba(87, 214, 200, 0.8);
+}
+#muelsyse-opening .mu-skip {
+  position: absolute;
+  right: 28px;
+  bottom: 28px;
+  padding: 9px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  user-select: none;
+}
+#muelsyse-opening .mu-skip.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+#muelsyse-opening .mu-skip:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* --------------------------------------------------------------------------
+   6. Finishing touches.
+   -------------------------------------------------------------------------- */
+html body[data-ds-dark-theme] [class*="composer"] {
+  border-color: rgba(87, 214, 200, 0.24);
+}
+html body[data-ds-dark-theme] [class*="composer"]:focus-within {
+  border-color: rgba(87, 214, 200, 0.5);
+}
+html body[data-ds-dark-theme] ::-webkit-scrollbar-thumb {
+  background: rgba(63, 214, 198, 0.22);
+}
+html body[data-ds-dark-theme] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(63, 214, 198, 0.4);
+}
+html body[data-ds-dark-theme] ::selection {
+  background: rgba(63, 214, 198, 0.3);
+  color: #f2fbf9;
+}
+html body[data-ds-dark-theme] [class*="sidebarCol"] svg {
+  color: #7fe0d5;
+  transition: color var(--ds-transition-duration-fast) var(--ds-ease-in-out);
+}
+html body[data-ds-dark-theme] [class*="sidebarCol"] svg:hover {
+  color: #aef0e9;
+}
+
+/* Small tag in the corner of the opening: which cut is playing. */
+#muelsyse-opening .mu-film-tag {
+  position: absolute;
+  left: 26px;
+  bottom: 26px;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  color: rgba(214, 245, 240, 0.5);
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   7. Caption taskbar — the Windows window strip.
+   --------------------------------------------------------------------------
+   `data-windows-titlebar` is set by the desktop preload; under it DSH paints
+   the 40px strip as the frame's `::before` (see dsh-client-ui-layout's
+   AppFrame.module.css). The app menu (应用 / 编辑) is a separate shadow host
+   owned by the preload, fixed at `--dsh-windows-menu-start`, z-index 1100.
+   The rule below only paints a box that DSH itself creates, so it is inert in
+   a plain browser. */
+html body[data-ds-dark-theme] #root > div:first-child[class*="frame"]::before {
+  background:
+    linear-gradient(90deg,
+      rgba(63, 214, 198, 0) 0%,
+      rgba(63, 214, 198, 0.035) 44%,
+      rgba(63, 214, 198, 0.07) 74%,
+      rgba(63, 214, 198, 0) 100%),
+    linear-gradient(90deg,
+      #081a1f 0%,
+      rgba(10, 31, 37, 0.95) 18%,
+      rgba(12, 38, 44, 0.86) 40%,
+      rgba(17, 52, 59, 0.62) 62%,
+      rgba(22, 68, 76, 0.30) 82%,
+      rgba(24, 76, 84, 0.14) 92%,
+      rgba(27, 84, 92, 0) 100%);
+  box-shadow:
+    inset 0 -1px 0 rgba(87, 214, 200, 0.34),
+    inset 0 -10px 16px -14px rgba(63, 214, 198, 0.22);
+}
+
+/* --------------------------------------------------------------------------
+   8. Quick actions, lifted into the caption.
+   --------------------------------------------------------------------------
+   The sidebar's action cluster (New Session + the panel rail) is not
+   reparented: every control is pinned into the strip with `position: fixed`,
+   exactly the treatment DSH already gives the collapsed toggle / New Session
+   buttons on Windows. The cluster starts after the 应用/编辑 menu, so the two
+   never overlap; `--dsh-windows-menu-start` moves from 48px to 84px when the
+   rail collapses, and the cluster follows it.
+
+   `backdrop-filter` on the sidebar would make it the containing block for
+   these fixed children and drag them back under the column, so it is dropped
+   for this platform only (the gradient fill already carries the glass). */
+html[data-windows-titlebar]:not([data-fullscreen]) body[data-ds-dark-theme] {
+  --mu-taskbar-lead: calc(var(--dsh-windows-menu-start, 48px) + 170px);
+  --mu-taskbar-height: var(--dsh-windows-titlebar-height, 40px);
+}
+
+html[data-windows-titlebar]:not([data-fullscreen]) body[data-ds-dark-theme] [class*="sidebarCol"] {
+  backdrop-filter: none;
+}
+
+html[data-windows-titlebar]:not([data-fullscreen]) body[data-ds-dark-theme] [class*="sidebarCol"] button[class*="newSession"] {
+  position: fixed;
+  top: calc((var(--mu-taskbar-height) - 28px) / 2);
+  left: var(--mu-taskbar-lead);
+  z-index: 900;
+  width: 136px;
+  height: 28px;
+  margin: 0;
+  padding: 0 12px;
+  gap: 6px;
+  border: 1px solid rgba(87, 214, 200, 0.6);
+  border-radius: 999px;
+  background-color: rgba(6, 20, 24, 0.97);
+  background-image: linear-gradient(180deg, rgba(87, 214, 200, 0.22), rgba(63, 214, 198, 0.07) 62%, rgba(63, 214, 198, 0) 100%);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow:
+    inset 0 1px 0 rgba(200, 255, 249, 0.28),
+    inset 0 -1px 0 rgba(63, 214, 198, 0.26),
+    0 0 0 1px rgba(87, 214, 200, 0.16),
+    0 1px 8px rgba(2, 9, 12, 0.55);
+  text-shadow:
+    0 1px 2px rgba(2, 9, 12, 0.85),
+    0 0 10px rgba(87, 214, 200, 0.4);
+  -webkit-app-region: no-drag;
+  transition: background-color 140ms ease, border-color 140ms ease, box-shadow 140ms ease, color 140ms ease;
+}
+
+html[data-windows-titlebar]:not([data-fullscreen]) body[data-ds-dark-theme] [class*="sidebarCol"] button[class*="newSession"]:hover {
+  background-color: rgba(16, 60, 64, 0.98);
+  background-image: linear-gradient(180deg, rgba(87, 214, 200, 0.38), rgba(63, 214, 198, 0.16) 70%, rgba(63, 214, 198, 0.06) 100%);
+  border-color: rgba(120, 240, 226, 0.86);
+  color: #ffffff;
+  box-shadow:
+    inset 0 1px 0 rgba(210, 255, 250, 0.36),
+    inset 0 -1px 0 rgba(63, 214, 198, 0.36),
+    0 0 0 1px rgba(87, 214, 200, 0.32),
+    0 0 14px rgba(63, 214, 198, 0.3),
+    0 1px 8px rgba(2, 9, 12, 0.5);
+  text-shadow:
+    0 1px 2px rgba(2, 9, 12, 0.72),
+    0 0 12px rgba(160, 255, 245, 0.6);
+}
+
+html[data-windows-titlebar]:not([data-fullscreen]) body[data-ds-dark-theme] [class*="sidebarCol"] button[class*="newSession"]:active {
+  background-color: rgba(9, 44, 47, 0.98);
+  background-image: linear-gradient(180deg, rgba(87, 214, 200, 0.46), rgba(63, 214, 198, 0.22) 100%);
+  border-color: rgba(140, 248, 236, 0.92);
+  color: #ffffff;
+  box-shadow:
+    inset 0 2px 5px rgba(2, 9, 12, 0.38),
+    0 0 0 1px rgba(87, 214, 200, 0.36),
+    0 0 10px rgba(63, 214, 198, 0.24);
+  text-shadow:
+    0 1px 2px rgba(2, 9, 12, 0.7),
+    0 0 12px rgba(160, 255, 245, 0.55);
+}
+
+/* The button's content box is a size container; let it follow the pill. */
+html[data-windows-titlebar]:not([data-fullscreen]) body[data-ds-dark-theme] [class*="sidebarCol"] [class*="newSessionContent"] {
+  width: auto;
+}
+
+html[data-windows-titlebar]:not([data-fullscreen]) body[data-ds-dark-theme] [class*="sidebarCol"] [class*="newSessionLabel"] {
+  max-width: none;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  text-shadow:
+    0 1px 2px rgba(2, 9, 12, 0.85),
+    0 0 10px rgba(87, 214, 200, 0.4);
+}
+
+html[data-windows-titlebar]:not([data-fullscreen]) body[data-ds-dark-theme] [class*="sidebarCol"] [class*="panelList"] {
+  position: fixed;
+  top: calc((var(--mu-taskbar-height) - 28px) / 2);
+  left: calc(var(--mu-taskbar-lead) + 144px);
+  z-index: 900;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  -webkit-app-region: no-drag;
+}
+
+html[data-windows-titlebar]:not([data-fullscreen]) body[data-ds-dark-theme] [class*="sidebarCol"] [class*="panelRow"] {
+  width: auto;
+  height: 28px;
+  min-height: 0;
+  margin: 0;
+  padding: 0 10px;
+  gap: 6px;
+  border: 1px solid rgba(87, 214, 200, 0.56);
+  border-radius: 999px;
+  background-color: rgba(6, 20, 24, 0.97);
+  background-image: linear-gradient(180deg, rgba(87, 214, 200, 0.2), rgba(63, 214, 198, 0.06) 62%, rgba(63, 214, 198, 0) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(200, 255, 249, 0.26),
+    inset 0 -1px 0 rgba(63, 214, 198, 0.24),
+    0 0 0 1px rgba(87, 214, 200, 0.14),
+    0 1px 6px rgba(2, 9, 12, 0.48);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 22px;
+  text-shadow:
+    0 1px 2px rgba(2, 9, 12, 0.8),
+    0 0 9px rgba(87, 214, 200, 0.34);
+  transition: background-color 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
+}
+
+html[data-windows-titlebar]:not([data-fullscreen]) body[data-ds-dark-theme] [class*="sidebarCol"] [class*="panelRow"]:hover,
+html[data-windows-titlebar]:not([data-fullscreen]) body[data-ds-dark-theme] [class*="sidebarCol"] [class*="panelRow"][aria-expanded="true"] {
+  background-color: rgba(17, 62, 66, 0.98);
+  background-image: linear-gradient(180deg, rgba(87, 214, 200, 0.37), rgba(63, 214, 198, 0.15) 70%, rgba(63, 214, 198, 0.05) 100%);
+  border-color: rgba(120, 240, 226, 0.84);
+  color: #ffffff;
+  box-shadow:
+    inset 0 1px 0 rgba(210, 255, 250, 0.34),
+    inset 0 -1px 0 rgba(63, 214, 198, 0.34),
+    0 0 0 1px rgba(87, 214, 200, 0.3),
+    0 0 12px rgba(63, 214, 198, 0.26);
+  text-shadow:
+    0 1px 2px rgba(2, 9, 12, 0.7),
+    0 0 11px rgba(160, 255, 245, 0.55);
+}
+
+html[data-windows-titlebar]:not([data-fullscreen]) body[data-ds-dark-theme] [class*="sidebarCol"] [class*="panelRow"][class*="panelActive"] {
+  background-color: rgba(20, 86, 80, 0.98);
+  background-image: linear-gradient(180deg, rgba(87, 214, 200, 0.32), rgba(63, 214, 198, 0.14) 75%);
+  border-color: rgba(140, 248, 236, 0.92);
+  color: #ffffff;
+  box-shadow:
+    inset 0 1px 0 rgba(210, 255, 250, 0.3),
+    inset 0 -1px 0 rgba(63, 214, 198, 0.4),
+    0 0 0 1px rgba(87, 214, 200, 0.34),
+    0 0 14px rgba(63, 214, 198, 0.3);
+  text-shadow:
+    0 1px 2px rgba(2, 9, 12, 0.66),
+    0 0 12px rgba(160, 255, 245, 0.6);
+}
+
+html[data-windows-titlebar]:not([data-fullscreen]) body[data-ds-dark-theme] [class*="sidebarCol"] [class*="panelTitle"] {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  text-shadow:
+    0 1px 2px rgba(2, 9, 12, 0.8),
+    0 0 9px rgba(87, 214, 200, 0.34);
+}
+
+/* With the rail collapsed the controls stay in the caption (that is the
+   point), but drop their labels and tighten the gap. */
+html[data-windows-titlebar]:not([data-fullscreen]) body[data-ds-dark-theme] [data-sidebar-collapsed] button[class*="newSession"] {
+  width: 40px;
+  padding: 0 8px;
+}
+
+html[data-windows-titlebar]:not([data-fullscreen]) body[data-ds-dark-theme] [data-sidebar-collapsed] [class*="panelList"] {
+  left: calc(var(--mu-taskbar-lead) + 56px);
+}
+
+/* --------------------------------------------------------------------------
+   9. Caption menubar — 应用 / 编辑.
+   --------------------------------------------------------------------------
+   The desktop preload owns `div[data-windows-menu]`. It attaches an *open*
+   shadow root and injects this stylesheet (lib/preload-app.cjs,
+   installWindowsMenu):
+
+     :host { position: fixed; top: 0; left: var(--dsh-windows-menu-start, 48px);
+             z-index: 1100; height: var(--dsh-windows-titlebar-height); ... }
+     button { height: 28px; padding: 0 10px; border: 0; border-radius: 6px;
+              background: transparent; color: var(--dsw-alias-label-secondary);
+              font: inherit; font-size: 14px; ... }
+     button:hover, button[aria-expanded=true] {
+              background: var(--dsw-alias-interactive-bg-hover);
+              color: var(--dsw-alias-label-primary); }
+
+   There is no ::part() export and no inline style, and the base
+   `background: transparent` is a literal, so page CSS cannot fill each button
+   individually. Everything that *does* cross the shadow boundary is used
+   here: the host is painted as the capsule, and the custom properties the
+   shadow stylesheet reads are re-bound on the host so only this menubar gets
+   the brighter values. `font-weight` and `text-shadow` inherit into the
+   buttons because the shadow rule uses `font: inherit`.
+
+   Per-button base fills would need a small JS shim that appends a <style> to
+   the open shadowRoot (see the hand-off note); the rules below are the maximum
+   that pure CSS can reach. */
+html body[data-ds-dark-theme] div[data-windows-menu] {
+  /* Tokens consumed inside the shadow root; scoped to the host so the rest of
+     the shell keeps its own label and interaction palette. */
+  --dsw-alias-label-secondary: #eafaf7;
+  --dsw-alias-label-primary: #ffffff;
+  --dsw-alias-interactive-bg-hover: rgba(63, 214, 198, 0.26);
+  --dsw-alias-state-business-primary: #57d6c8;
+
+  box-sizing: border-box;
+  width: max-content;
+  height: 30px;
+  top: calc((var(--dsh-windows-titlebar-height, 40px) - 30px) / 2);
+  padding: 0 3px;
+  border: 1px solid rgba(87, 214, 200, 0.4);
+  border-radius: 999px;
+  background:
+    radial-gradient(58% 120% at 24% 50%, rgba(87, 214, 200, 0.1), rgba(87, 214, 200, 0) 72%),
+    radial-gradient(58% 120% at 76% 50%, rgba(87, 214, 200, 0.1), rgba(87, 214, 200, 0) 72%),
+    linear-gradient(180deg, rgba(20, 52, 58, 0.94), rgba(6, 20, 24, 0.95));
+  box-shadow:
+    inset 0 1px 0 rgba(163, 240, 232, 0.18),
+    inset 0 -1px 0 rgba(2, 9, 12, 0.5),
+    0 2px 8px rgba(2, 9, 12, 0.38);
+  color: var(--dsw-alias-label-secondary);
+  font-weight: 500;
+  text-shadow:
+    0 1px 2px rgba(2, 9, 12, 0.6),
+    0 0 10px rgba(87, 214, 200, 0.16);
+}

@@ -1,0 +1,52 @@
+{
+  "name": "dsh-theme-muelsyse",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Muelsyse · 生态科 — a cinematic Rhine-Lab themed skin for the DeepSeek Harness Web GUI: four opening films with their own scores, a seamless forest loop, a three-track sound bed, an integrated left-sidebar console, and the 37-clip Muelsyse voice bank.",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./assets/icon.png",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true
+    }
+  },
+  "peerDependencies": {
+    "dsh-plugin-muelsyse-voice": "0.1.0"
+  },
+  "peerDependenciesMeta": {
+    "dsh-plugin-muelsyse-voice": {
+      "optional": true
+    }
+  },
+  "files": [
+    "lib",
+    "theme",
+    "assets",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "README.md",
+    "NOTICE.md",
+    "LICENSE",
+    "ASSET-LICENSE.md",
+    "PROVENANCE.json",
+    "install.ps1",
+    "uninstall.ps1",
+    "PROVENANCE.md",
+    "CREDITS.md"
+  ],
+  "engines": {
+    "dsh": ">=0.2.1-rc.3"
+  }
+}

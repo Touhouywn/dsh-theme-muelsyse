@@ -1,0 +1,182 @@
+{
+ "version": 1,
+ "templates": [
+  {
+   "trigger": "ANNIVERSARY",
+   "ids": [
+    "CN_044"
+   ]
+  },
+  {
+   "trigger": "BATTLE_FACE_ENEMY",
+   "ids": [
+    "CN_020"
+   ]
+  },
+  {
+   "trigger": "BATTLE_PLACE",
+   "ids": [
+    "CN_023",
+    "CN_024"
+   ]
+  },
+  {
+   "trigger": "BATTLE_SELECT",
+   "ids": [
+    "CN_021",
+    "CN_022"
+   ]
+  },
+  {
+   "trigger": "BATTLE_SKILL_1",
+   "ids": [
+    "CN_025"
+   ]
+  },
+  {
+   "trigger": "BATTLE_SKILL_2",
+   "ids": [
+    "CN_026"
+   ]
+  },
+  {
+   "trigger": "BATTLE_SKILL_3",
+   "ids": [
+    "CN_027"
+   ]
+  },
+  {
+   "trigger": "BATTLE_SKILL_4",
+   "ids": [
+    "CN_028"
+   ]
+  },
+  {
+   "trigger": "BATTLE_START",
+   "ids": [
+    "CN_019"
+   ]
+  },
+  {
+   "trigger": "BUILDING_FAVOR_BUBBLE",
+   "ids": [
+    "CN_036"
+   ]
+  },
+  {
+   "trigger": "BUILDING_PLACE",
+   "ids": [
+    "CN_033"
+   ]
+  },
+  {
+   "trigger": "BUILDING_TOUCHING",
+   "ids": [
+    "CN_034"
+   ]
+  },
+  {
+   "trigger": "EVOLVE_ONE",
+   "ids": [
+    "CN_013"
+   ]
+  },
+  {
+   "trigger": "EVOLVE_TWO",
+   "ids": [
+    "CN_014"
+   ]
+  },
+  {
+   "trigger": "FOUR_STAR",
+   "ids": [
+    "CN_029"
+   ]
+  },
+  {
+   "trigger": "GACHA",
+   "ids": [
+    "CN_011"
+   ]
+  },
+  {
+   "trigger": "GREETING",
+   "ids": [
+    "CN_042"
+   ]
+  },
+  {
+   "trigger": "HOME_PLACE",
+   "ids": [
+    "CN_001"
+   ]
+  },
+  {
+   "trigger": "HOME_SHOW",
+   "ids": [
+    "CN_002",
+    "CN_003",
+    "CN_004",
+    "CN_005",
+    "CN_006",
+    "CN_007",
+    "CN_008",
+    "CN_009"
+   ]
+  },
+  {
+   "trigger": "HOME_WAIT",
+   "ids": [
+    "CN_010"
+   ]
+  },
+  {
+   "trigger": "LEVEL_UP",
+   "ids": [
+    "CN_012"
+   ]
+  },
+  {
+   "trigger": "LOADING_PANEL",
+   "ids": [
+    "CN_037"
+   ]
+  },
+  {
+   "trigger": "LOSE",
+   "ids": [
+    "CN_032"
+   ]
+  },
+  {
+   "trigger": "NEW_YEAR",
+   "ids": [
+    "CN_038"
+   ]
+  },
+  {
+   "trigger": "SQUAD",
+   "ids": [
+    "CN_017"
+   ]
+  },
+  {
+   "trigger": "SQUAD_FIRST",
+   "ids": [
+    "CN_018"
+   ]
+  },
+  {
+   "trigger": "THREE_STAR",
+   "ids": [
+    "CN_030"
+   ]
+  },
+  {
+   "trigger": "TWO_STAR",
+   "ids": [
+    "CN_031"
+   ]
+  }
+ ]
+}

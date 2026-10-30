@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Muelsyse voice",
+    "description": "Reads replies with Muelsyse's original Japanese clips; long lines go to TTS (wired in L3)."
+  }
+}

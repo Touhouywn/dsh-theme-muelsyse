@@ -1,0 +1,46 @@
+{
+  "name": "dsh-plugin-muelsyse-voice",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "Muelsyse voice: semantic clip retrieval over the 37-clip JA bank (default, zero token), with an explicit opt-in translate+SoVITS path.",
+  "license": "MIT",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./semantic": "./semantic.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "files": [
+    "index.js",
+    "semantic.js",
+    "client.js",
+    "translate.js",
+    "synth.js",
+    "cordis.patch.yml",
+    "assets/catalog.json",
+    "assets/intents.json",
+    "assets/templates.json",
+    "assets/clips/*.ogg",
+    "assets/clips/refs/*.ogg",
+    "assets/clips/refs/*.wav",
+    "locale/*.json",
+    "install.ps1",
+    "uninstall.ps1",
+    "tools/annotate-clips.mjs",
+    "tools/start-sovits.ps1"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true
+    }
+  },
+  "engines": {
+    "dsh": ">=0.2.1-rc.3"
+  }
+}

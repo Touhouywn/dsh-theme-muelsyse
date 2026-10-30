@@ -1,0 +1,28 @@
+{
+ "version": 1,
+ "phases": {
+  "start": [
+   "hum"
+  ],
+  "mid": [
+   "mid"
+  ],
+  "end": [
+   "ack"
+  ]
+ },
+ "sounds": {
+  "hum": {
+   "file": "thinking/hum.wav",
+   "duration": 1.06
+  },
+  "mid": {
+   "file": "thinking/mid.wav",
+   "duration": 1.06
+  },
+  "ack": {
+   "file": "thinking/ack.wav",
+   "duration": 1.0
+  }
+ }
+}

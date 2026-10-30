@@ -1,0 +1,807 @@
+{
+  "version": 1,
+  "updated": "2026-10-29",
+  "note": "缪尔赛思语义检索意图表。index.js 只读这份文件：往 clipIds 里加切片即可扩充，不改代码。keywords 既是分类器的中文触发词，也是类内打分的关键词回扣。",
+  "settings": {
+    "minScore": 0.18,
+    "echoScore": 0.5,
+    "maxSegments": 2
+  },
+  "groups": {
+    "social": {
+      "label": "社交礼仪",
+      "order": 1
+    },
+    "attitude": {
+      "label": "态度反馈",
+      "order": 2
+    },
+    "emotion": {
+      "label": "情感",
+      "order": 3
+    },
+    "management": {
+      "label": "对话管理",
+      "order": 4
+    },
+    "daily": {
+      "label": "日常",
+      "order": 5
+    }
+  },
+  "intents": {
+    "greeting": {
+      "label": "问候",
+      "group": "social",
+      "priority": 94,
+      "keywords": [
+        "你好",
+        "您好",
+        "早上好",
+        "早安",
+        "中午好",
+        "下午好",
+        "晚上好",
+        "午安",
+        "嗨",
+        "哈喽",
+        "在吗",
+        "在不在",
+        "好久不见",
+        "欢迎回来",
+        "初次见面",
+        "こんにちは",
+        "おはよう",
+        "こんばんは"
+      ],
+      "clipIds": [
+        "CN_001",
+        "CN_116",
+        "CN_117"
+      ],
+      "default": "CN_001",
+      "fallback": null
+    },
+    "farewell": {
+      "label": "告别",
+      "group": "social",
+      "priority": 96,
+      "keywords": [
+        "再见",
+        "拜拜",
+        "回见",
+        "先走了",
+        "我走了",
+        "该走了",
+        "告辞",
+        "晚安",
+        "明天见",
+        "下次见",
+        "一路顺风",
+        "保重",
+        "さようなら",
+        "またね"
+      ],
+      "clipIds": [
+        "CN_031",
+        "CN_119",
+        "CN_124"
+      ],
+      "default": "CN_031",
+      "fallback": null
+    },
+    "thanks": {
+      "label": "感谢",
+      "group": "social",
+      "priority": 98,
+      "keywords": [
+        "谢谢",
+        "感谢",
+        "多谢",
+        "谢了",
+        "谢啦",
+        "谢谢你",
+        "ありがとう"
+      ],
+      "clipIds": [
+        "CN_009",
+        "CN_118"
+      ],
+      "default": "CN_009",
+      "fallback": null
+    },
+    "apology": {
+      "label": "道歉",
+      "group": "social",
+      "priority": 100,
+      "keywords": [
+        "抱歉",
+        "对不起",
+        "不好意思",
+        "见谅",
+        "是我不好",
+        "怪我",
+        "原谅我",
+        "失礼",
+        "すみません",
+        "ごめん",
+        "ごめんなさい"
+      ],
+      "clipIds": [
+        "CN_100",
+        "CN_101",
+        "CN_102"
+      ],
+      "default": "CN_100",
+      "fallback": "comfort",
+      "note": "2026-10-29 补入 synth1：ごめんなさい / ごめんね / 申し訳ない，default 指 CN_100。"
+    },
+    "self_intro": {
+      "label": "自我介绍",
+      "group": "social",
+      "priority": 92,
+      "keywords": [
+        "我叫",
+        "我的名字",
+        "自我介绍",
+        "关于我",
+        "我是缪尔",
+        "我是生态",
+        "介绍一下",
+        "我来自",
+        "あたしは",
+        "ミュルジス"
+      ],
+      "clipIds": [
+        "CN_002",
+        "CN_006",
+        "CN_007"
+      ],
+      "default": "CN_002",
+      "fallback": null
+    },
+    "affirm": {
+      "label": "肯定",
+      "group": "attitude",
+      "priority": 80,
+      "keywords": [
+        "好的",
+        "好呀",
+        "好啊",
+        "行吧",
+        "可以",
+        "没问题",
+        "是的",
+        "对的",
+        "对啊",
+        "嗯",
+        "嗯嗯",
+        "收到",
+        "遵命",
+        "はい",
+        "うん",
+        "そうだね"
+      ],
+      "clipIds": [
+        "CN_103",
+        "CN_104",
+        "CN_105",
+        "CN_120",
+        "CN_123"
+      ],
+      "default": "CN_103",
+      "fallback": "confirm",
+      "note": "2026-10-29 补入 synth1：うん / そうだね / いいよ / はい / そう，default 指 CN_103。"
+    },
+    "negate": {
+      "label": "否定",
+      "group": "attitude",
+      "priority": 82,
+      "keywords": [
+        "不行",
+        "不要",
+        "不用",
+        "不对",
+        "不是",
+        "没有",
+        "别动",
+        "绝不",
+        "不可能",
+        "我才不",
+        "拒绝",
+        "だめ",
+        "いや"
+      ],
+      "clipIds": [
+        "CN_012",
+        "CN_028"
+      ],
+      "default": "CN_012",
+      "fallback": null
+    },
+    "agree": {
+      "label": "赞同",
+      "group": "attitude",
+      "priority": 88,
+      "keywords": [
+        "同意",
+        "赞成",
+        "有道理",
+        "说得对",
+        "确实",
+        "没错",
+        "是这样的",
+        "我也这么想",
+        "认可",
+        "同意你"
+      ],
+      "clipIds": [
+        "CN_033"
+      ],
+      "default": "CN_033",
+      "fallback": null
+    },
+    "disagree": {
+      "label": "反对",
+      "group": "attitude",
+      "priority": 86,
+      "keywords": [
+        "不同意",
+        "不赞同",
+        "反对",
+        "不太同意",
+        "不见得",
+        "未必",
+        "我有不同",
+        "恕难同意",
+        "不认可",
+        "違う"
+      ],
+      "clipIds": [
+        "CN_106",
+        "CN_107"
+      ],
+      "default": "CN_106",
+      "fallback": "negate",
+      "note": "2026-10-29 补入 synth1：違うと思う / そうでもないよ，default 指 CN_106。"
+    },
+    "confused": {
+      "label": "困惑",
+      "group": "attitude",
+      "priority": 84,
+      "keywords": [
+        "不明白",
+        "没听懂",
+        "听不懂",
+        "什么意思",
+        "不太懂",
+        "不清楚",
+        "困惑",
+        "为什么",
+        "怎么回事",
+        "搞不懂",
+        "分からない",
+        "どういう"
+      ],
+      "clipIds": [
+        "CN_108",
+        "CN_109"
+      ],
+      "default": "CN_108",
+      "fallback": "thinking",
+      "note": "2026-10-29 补入 synth1：え？何？ / え？どういうこと？，default 指 CN_108。"
+    },
+    "understand": {
+      "label": "理解",
+      "group": "attitude",
+      "priority": 90,
+      "keywords": [
+        "明白了",
+        "我明白",
+        "理解",
+        "懂了",
+        "我知道了",
+        "原来如此",
+        "了解了",
+        "清楚",
+        "分かった",
+        "なるほど",
+        "そういうこと"
+      ],
+      "clipIds": [
+        "CN_110",
+        "CN_111",
+        "CN_112"
+      ],
+      "default": "CN_110",
+      "fallback": "confirm",
+      "note": "2026-10-29 补入 synth1：なるほど / わかった / そういうことね，default 指 CN_110。"
+    },
+    "happy": {
+      "label": "开心",
+      "group": "emotion",
+      "priority": 70,
+      "keywords": [
+        "开心",
+        "高兴",
+        "太好了",
+        "好耶",
+        "喜欢",
+        "真棒",
+        "愉快",
+        "幸福",
+        "嘿嘿",
+        "好开心",
+        "嬉しい",
+        "楽しい"
+      ],
+      "clipIds": [
+        "CN_013",
+        "CN_014",
+        "CN_030"
+      ],
+      "default": "CN_014",
+      "fallback": null
+    },
+    "comfort": {
+      "label": "安抚",
+      "group": "emotion",
+      "priority": 74,
+      "keywords": [
+        "别难过",
+        "没事的",
+        "没关系",
+        "我在",
+        "陪着你",
+        "别担心",
+        "会好的",
+        "抱抱",
+        "安慰",
+        "放心",
+        "别怕",
+        "有我在"
+      ],
+      "clipIds": [
+        "CN_010",
+        "CN_017",
+        "CN_034",
+        "CN_125"
+      ],
+      "default": "CN_017",
+      "fallback": null
+    },
+    "encourage": {
+      "label": "鼓励",
+      "group": "emotion",
+      "priority": 76,
+      "keywords": [
+        "加油",
+        "你可以的",
+        "相信自己",
+        "别放弃",
+        "努力",
+        "振作",
+        "一定能",
+        "坚持下去",
+        "打起精神",
+        "頑張"
+      ],
+      "clipIds": [
+        "CN_032"
+      ],
+      "default": "CN_032",
+      "fallback": null
+    },
+    "praise": {
+      "label": "称赞",
+      "group": "emotion",
+      "priority": 78,
+      "keywords": [
+        "真厉害",
+        "好厉害",
+        "了不起",
+        "优秀",
+        "做得好",
+        "太强了",
+        "佩服",
+        "你真好",
+        "真聪明",
+        "すごい",
+        "上手",
+        "えらい",
+        "すごいね"
+      ],
+      "clipIds": [
+        "CN_113",
+        "CN_114",
+        "CN_115"
+      ],
+      "default": "CN_113",
+      "fallback": "happy",
+      "note": "2026-10-29 补入 synth1：すごいね / 上手だね / えらいね，default 指 CN_113。"
+    },
+    "worry": {
+      "label": "担心",
+      "group": "emotion",
+      "priority": 72,
+      "keywords": [
+        "担心",
+        "忧虑",
+        "不安",
+        "害怕",
+        "危险",
+        "小心",
+        "严重",
+        "糟糕",
+        "怎么办",
+        "心配",
+        "大丈夫"
+      ],
+      "clipIds": [
+        "CN_008",
+        "CN_020"
+      ],
+      "default": "CN_020",
+      "fallback": null
+    },
+    "filler": {
+      "label": "语气承接",
+      "group": "management",
+      "priority": 10,
+      "keywords": [
+        "怎么说呢",
+        "这样啊",
+        "唔",
+        "话说",
+        "嘛",
+        "あの",
+        "えっと",
+        "呃"
+      ],
+      "clipIds": [
+        "CN_025",
+        "CN_026",
+        "CN_027",
+        "CN_037",
+        "CN_122"
+      ],
+      "default": "CN_025",
+      "fallback": null,
+      "note": "通用兜底：短、无实义、接得住任何一句。"
+    },
+    "thinking": {
+      "label": "思考",
+      "group": "management",
+      "priority": 62,
+      "keywords": [
+        "让我想想",
+        "我想想",
+        "思考",
+        "我在想",
+        "考虑一下",
+        "琢磨",
+        "想一想",
+        "どうして",
+        "考え"
+      ],
+      "clipIds": [
+        "CN_018",
+        "CN_019",
+        "CN_023",
+        "CN_024",
+        "CN_044"
+      ],
+      "default": "CN_024",
+      "fallback": null
+    },
+    "confirm": {
+      "label": "确认",
+      "group": "management",
+      "priority": 68,
+      "keywords": [
+        "在听",
+        "我在听",
+        "听得到",
+        "听到了",
+        "是吗",
+        "对吧",
+        "怎么样",
+        "好不好",
+        "行吗",
+        "对吗",
+        "可以吗"
+      ],
+      "clipIds": [
+        "CN_021",
+        "CN_121"
+      ],
+      "default": "CN_021",
+      "fallback": null
+    },
+    "remind": {
+      "label": "提醒",
+      "group": "management",
+      "priority": 64,
+      "keywords": [
+        "记得",
+        "别忘了",
+        "提醒",
+        "注意",
+        "好好休息",
+        "照顾好自己",
+        "按时",
+        "小心点",
+        "记一下",
+        "休息够"
+      ],
+      "clipIds": [
+        "CN_042"
+      ],
+      "default": "CN_042",
+      "fallback": null
+    },
+    "invite": {
+      "label": "邀请",
+      "group": "management",
+      "priority": 66,
+      "keywords": [
+        "要不要",
+        "一起",
+        "来吗",
+        "陪我",
+        "请你",
+        "邀请",
+        "试试",
+        "帮我",
+        "走吧",
+        "散步",
+        "来看看",
+        "一緒に",
+        "必要かしら",
+        "手を貸して",
+        "帮我看看"
+      ],
+      "clipIds": [
+        "CN_003",
+        "CN_004",
+        "CN_005",
+        "CN_011",
+        "CN_022",
+        "CN_029",
+        "CN_036",
+        "CN_038"
+      ],
+      "default": "CN_022",
+      "fallback": null
+    },
+    "time_weather": {
+      "label": "时间天气",
+      "group": "daily",
+      "priority": 60,
+      "keywords": [
+        "天气",
+        "下雨",
+        "晴天",
+        "雨",
+        "晴",
+        "几点了",
+        "现在几点",
+        "几点",
+        "时间",
+        "外面",
+        "气温",
+        "好冷",
+        "好热",
+        "预报",
+        "風",
+        "天気"
+      ],
+      "clipIds": [
+        "CN_200",
+        "CN_201",
+        "CN_202",
+        "CN_203"
+      ],
+      "default": "CN_200",
+      "fallback": null,
+      "note": "2026-10-29 补入 synth2：天气 / 时间 / 窗外体感，4 条。"
+    },
+    "meal": {
+      "label": "吃饭",
+      "group": "daily",
+      "priority": 57,
+      "keywords": [
+        "吃饭",
+        "吃了",
+        "早饭",
+        "午饭",
+        "晚饭",
+        "早餐",
+        "午餐",
+        "晚餐",
+        "饿了",
+        "肚子饿",
+        "好吃",
+        "便当",
+        "外卖",
+        "做饭",
+        "下厨",
+        "宵夜",
+        "零食",
+        "ご飯",
+        "お腹"
+      ],
+      "clipIds": [
+        "CN_204",
+        "CN_205",
+        "CN_206"
+      ],
+      "default": "CN_204",
+      "fallback": null,
+      "note": "2026-10-29 补入 synth2：邀饭 / 问吃过没 / 想吃热的，3 条。"
+    },
+    "rest": {
+      "label": "休息",
+      "group": "daily",
+      "priority": 65,
+      "keywords": [
+        "休息",
+        "累了",
+        "困了",
+        "好累",
+        "乏力",
+        "歇一会",
+        "歇歇",
+        "放松",
+        "疲惫",
+        "打盹",
+        "睡一会",
+        "想睡",
+        "犯困"
+      ],
+      "clipIds": [
+        "CN_207",
+        "CN_208",
+        "CN_209"
+      ],
+      "default": "CN_207",
+      "fallback": "comfort",
+      "note": "2026-10-29 补入 synth2：劝休息 / 别硬撑 / 问睡得可好，3 条；priority 略高于 remind，裸「休息」归这里。"
+    },
+    "blessing": {
+      "label": "祝福",
+      "group": "social",
+      "priority": 87,
+      "keywords": [
+        "生日",
+        "祝福",
+        "恭喜",
+        "顺利",
+        "好运",
+        "平安",
+        "考试",
+        "心愿",
+        "许愿",
+        "健康",
+        "金榜",
+        "过关"
+      ],
+      "clipIds": [
+        "CN_210",
+        "CN_211",
+        "CN_212",
+        "CN_213"
+      ],
+      "default": "CN_210",
+      "fallback": "happy",
+      "note": "2026-10-29 补入 synth2：生日 / 新年 / 祈愿 / 考试顺利，4 条。"
+    },
+    "surprise": {
+      "label": "惊讶",
+      "group": "emotion",
+      "priority": 77,
+      "keywords": [
+        "真的吗",
+        "不会吧",
+        "竟然",
+        "居然",
+        "惊讶",
+        "吓一跳",
+        "没想到",
+        "天哪",
+        "真的假的",
+        "意外",
+        "びっくり",
+        "まさか"
+      ],
+      "clipIds": [
+        "CN_214",
+        "CN_215",
+        "CN_216",
+        "CN_217"
+      ],
+      "default": "CN_214",
+      "fallback": "confused",
+      "note": "2026-10-29 补入 synth2：反问 / 不敢相信 / 被吓到 / 感叹，4 条。"
+    },
+    "missing": {
+      "label": "思念",
+      "group": "emotion",
+      "priority": 73,
+      "keywords": [
+        "想你",
+        "好想你",
+        "想念",
+        "思念",
+        "想见你",
+        "想见",
+        "惦记",
+        "牵挂",
+        "怀念",
+        "寂しい",
+        "会いたい",
+        "好久没见"
+      ],
+      "clipIds": [
+        "CN_218",
+        "CN_219",
+        "CN_220"
+      ],
+      "default": "CN_218",
+      "fallback": "comfort",
+      "note": "2026-10-29 补入 synth2：想见 / 一直惦记 / 盼重逢，3 条。"
+    },
+    "waiting": {
+      "label": "等待",
+      "group": "management",
+      "priority": 53,
+      "keywords": [
+        "等一下",
+        "等等",
+        "稍等",
+        "等我",
+        "等待",
+        "排队",
+        "在等",
+        "马上就好",
+        "待って",
+        "稍后"
+      ],
+      "clipIds": [
+        "CN_221",
+        "CN_222",
+        "CN_223"
+      ],
+      "default": "CN_221",
+      "fallback": null,
+      "note": "2026-10-29 补入 synth2：我等你 / 慢慢来 / 就在这儿等，3 条。"
+    },
+    "hurry": {
+      "label": "催促",
+      "group": "management",
+      "priority": 54,
+      "keywords": [
+        "快点",
+        "快一点",
+        "赶紧",
+        "赶快",
+        "抓紧",
+        "来不及",
+        "赶时间",
+        "磨蹭",
+        "迟到了",
+        "快点走",
+        "早く",
+        "急いで"
+      ],
+      "clipIds": [
+        "CN_224",
+        "CN_225",
+        "CN_226"
+      ],
+      "default": "CN_224",
+      "fallback": null,
+      "note": "2026-10-29 补入 synth2：得快点 / 要迟到了 / 快走，3 条。"
+    }
+  }
+}

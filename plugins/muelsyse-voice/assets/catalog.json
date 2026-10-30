@@ -1,0 +1,1040 @@
+{
+  "version": 2.2,
+  "source": "bilibili:BV17z421U71V",
+  "clips": [
+    {
+      "id": "CN_001",
+      "file": "clips/CN_001.ogg",
+      "text": "大地に滴る雨にも、加湿器の霧にも。あなたがあたしを求める声は、いつもちゃんと聞こえるわ。",
+      "asrText": "大地に滴る雨にも可視的の霧にもあなたが私を求める声はいつもちゃんと聞こえるわ",
+      "cnText": "落向大地的雨，加湿器的雾，你需要我的时候，我总是听得到的。",
+      "duration": 10.54,
+      "sourceStart": 0.38,
+      "sourceEnd": 10.92,
+      "tags": [
+        "HOME_PLACE"
+      ],
+      "stem": "vocals",
+      "version": "c710c358"
+    },
+    {
+      "id": "CN_002",
+      "file": "clips/CN_002.ogg",
+      "text": "大地を歩いた足跡も、人々に称えられた名前も、最後にはちっとも残らなかったわ……「ミュル」――あたしの一族に残っている巨獣の記憶は、名前の中にあったこの短い響きだけ。",
+      "asrText": "大地を歩いた足跡も人に称えられた名前も最後にはちっとも残らなかったわみゅるあたしの一族に残っている巨獣の記憶は名前の中にあったこの短い響きだけ",
+      "cnText": "走过大地的痕迹，被人称颂的名字，到最后，一点也没有留下呢……“缪尔”，我们亲族对祂的全部回忆，就只剩下这一个音节，留在了名字里。",
+      "duration": 19.84,
+      "sourceStart": 11.62,
+      "sourceEnd": 31.46,
+      "tags": [
+        "HOME_SHOW"
+      ],
+      "stem": "vocals",
+      "version": "4802bdb6"
+    },
+    {
+      "id": "CN_003",
+      "file": "clips/CN_003.ogg",
+      "text": "あの方は旅立ったわ。お供のエルフを全部どこかにやって、時の流れに連れられて遠いところに行ってしまったの。でもね、もしかしたらあの方はただ巨獣をやるのが嫌になっちゃって、ロドスにいるあの人たちみたいに、人間として生活をし始めたんじゃないかなって思うのよ。あなたはどう思う、ドクター？",
+      "asrText": "あの方は旅だったわお友のえるふを全部どこかにやって時の流れに連れられて遠いところに行ってしまったのでもねもしかしたらあの方はただ巨獣をやるのが嫌になっちゃってろどすにいるあの人たちみたいに人間として生活をし始めたんじゃないかなって思うのよあなたはどう思うどくた",
+      "cnText": "祂离开了，遣走自己所有的精灵，被时间带着，去了很远的地方。我觉得，说不定呢，祂只是厌烦了当巨兽，和罗德岛上那些家伙一样，过起了人类生活。你怎么看，博士？",
+      "duration": 31.54,
+      "sourceStart": 32.12,
+      "sourceEnd": 63.66,
+      "tags": [
+        "HOME_SHOW"
+      ],
+      "stem": "vocals",
+      "version": "46198b51"
+    },
+    {
+      "id": "CN_004",
+      "file": "clips/CN_004.ogg",
+      "text": "水晶の中の情報は『交感』に頼ることでしか得られないわ。そうそう、あなたの想像している通り、あたしと手を握っている時みたいな感じよ。そうだ、手を貸して！どう、あの方の気持ちが伝わったかしら？全然？本当にちっとも感じないの？あら、そうなのね……",
+      "asrText": "水晶の中の情報は交換に頼ることでしか得られないわそうそうあなたの想像している通りあたしと手を握っている時みたいな感じよそうだ手を貸してどうあの方の気持ちが伝わったかしら全然本当にちっとも感じないのあらそうなのね",
+      "cnText": "水晶里的信息只能用“沟通”来获取呢。嗯，就是你想的，握着你手时的那种。对了，借你的手用一下！怎么样，感觉到祂的思绪了吗？！没有吗，一点都没有？这样啊，好吧……",
+      "duration": 31.76,
+      "sourceStart": 64.32,
+      "sourceEnd": 96.08,
+      "tags": [
+        "HOME_SHOW"
+      ],
+      "stem": "vocals",
+      "version": "37001152"
+    },
+    {
+      "id": "CN_005",
+      "file": "clips/CN_005.ogg",
+      "text": "ふぅ～、これ以上に綺麗な水はないわね。あなたも喉が渇いているなら、飲んでみるといいわ。あの方の涙とか血だまりの類じゃないかって思ってるかもしれないけど、深く考えなくていいから。あなたがここの泉を飲んでくれたら、一番喜ぶ人はあの方なのよ……いえ、一番喜ぶ巨獣と言うべきかしら。",
+      "asrText": "これ以上に綺麗な水はないわねあなたも喉が渇いているなら飲んでみるといいわあの方の涙とか血だまりのたぐいじゃないかって思ってるかもしれないけど深く考えなくていいからあなたがここの泉を飲んでくれたら一番喜ぶ人はあの方なのよ何喜ぶ虚獣と言うべきかしら",
+      "cnText": "呼啊，没有比这更洁净的水了~你要是渴了，也可以喝一点。我知道，你可能会觉得这是祂的血泊或是泪水之类的，别想那么多，你喝下这里的甘泉，祂可是最高兴的那个人……嗯，巨兽。",
+      "duration": 32.68,
+      "sourceStart": 97.06,
+      "sourceEnd": 129.74,
+      "tags": [
+        "HOME_SHOW"
+      ],
+      "stem": "vocals",
+      "version": "6d3d2d87"
+    },
+    {
+      "id": "CN_006",
+      "file": "clips/CN_006.ogg",
+      "text": "「背にある泉は昼夜を問わず湧き出し、流れる水は絹のように体を包み込む。慈雨が大地を潤し、万物に生長をもたらす恵みとなる……」あなたの同族が記憶の中であの方について残した一文よ。あたし、あの方の姿を絵にすべきだと思うの。そうすれば、みんながその姿を見ることができるでしょう。",
+      "asrText": "背にある泉は昼夜を問わず湧き出し流れる水は絹のように体を包み込む自由が大地を潤し万物に成長をもたらす恵みとなるにすべきだと思うのそうすればみんながその姿を見ることができるでしょ",
+      "cnText": "“背脊上涌泉昼夜不停，流水像丝巾般包裹身体，甘霖浇灌大地，滋养万物生长……”你的同族在回忆里为祂留下了这段文字。我想，我应该把祂画下来，这样，别人就能看见祂了。",
+      "duration": 36.86,
+      "sourceStart": 130.22,
+      "sourceEnd": 167.08,
+      "tags": [
+        "HOME_SHOW"
+      ],
+      "stem": "vocals",
+      "version": "eecb6a42"
+    },
+    {
+      "id": "CN_007",
+      "file": "clips/CN_007.ogg",
+      "text": "あなたの言う通り、ここがあたしに一番ふさわしい場所よ。だけどあたしってば、いけないことを覚えちゃったから、本当にひとりぼっちでここに住むことになったら、きっと息が詰まって枯れちゃうわ。エルフたちは大丈夫かもしれないけど、でも……あたしには無理。つまるところ、あたしもただの普通の女の子だったってことよ。",
+      "asrText": "あなたの言う通りここが私に一番ふさわしい場所よだけど私ってばいけないことを覚えちゃったから本当に一人ぼっちでここに住むことになったらきっと息が詰まって枯れちゃうわえるふたちは大丈夫かもしれないけどでも私には無理詰まるところ私もただの普通の女の子だったってことよ",
+      "cnText": "你说得没错，这里是最适合我的地方。可惜我已经学坏了，真要孤孤单单住在这里，一定会闷成枯芽的。精灵们或许可以吧，但我……做不到。到头来，我也只是个普普通通的女孩子罢了。",
+      "duration": 33.62,
+      "sourceStart": 167.98,
+      "sourceEnd": 201.6,
+      "tags": [
+        "HOME_SHOW"
+      ],
+      "stem": "vocals",
+      "version": "69842169"
+    },
+    {
+      "id": "CN_008",
+      "file": "clips/CN_008.ogg",
+      "text": "あの方がいなかったら、ここの環境は急激に変化するわ。で、あたしにはそれを元に戻す力もない。欲しくてたまらないものがある日突然手に入ったけれど、それがいつ消えるかもしれないと知って、ずーっとびくびくし続けないといけない感じよ。そんなつらい日々を送るくらいなら、危険に身をさらすほうがまだマシだわ。",
+      "asrText": "あの方がいなかったらここの環境は急激に変化するわで私にはそれを元に戻す力もない欲しくてたまらないものがある日突然手に入ったけれどそれがいつ消えるかもしれないと知ってずっとびくびくし続けないといけない感じよそんな辛い日を送るくらいなら危険に身を晒す方がまだまだ私だわ",
+      "cnText": "没有祂在，这里的环境就会急剧变化，而我没有能力复现。就像是求而不得的东西某一天落在手心里，却又得知它随时会消失，每一刻都在提心吊胆。我宁愿接受风险，也不想那样痛苦地活着。",
+      "duration": 30.76,
+      "sourceStart": 202.02,
+      "sourceEnd": 232.78,
+      "tags": [
+        "HOME_SHOW"
+      ],
+      "stem": "vocals",
+      "version": "2c9b1331"
+    },
+    {
+      "id": "CN_009",
+      "file": "clips/CN_009.ogg",
+      "text": "あの方について、知り得るものは全部集まったわ。ありがとう、ドクター。わざわざ時間を割いてずっと付き合ってくれて。これからのことは、戻ってから考えるわ。あ……雨ね。そろそろ、出発するべきかしら……",
+      "asrText": "あの方について知り得る者は全部集まったわありがとうどくたわざわざ時間を割いてずっと付き合ってくれてこれからのことは戻ってから考えるわあ雨ねさらさら出発するべきかしら",
+      "cnText": "关于祂的一切，能找到的，都已经在身边了。谢谢你，博士，特意花时间陪我那么久。今后的事情，等回去以后再想吧。啊……下雨了。我们是不是，也该离开了……",
+      "duration": 29.1,
+      "sourceStart": 233.64,
+      "sourceEnd": 262.74,
+      "tags": [
+        "HOME_SHOW"
+      ],
+      "stem": "vocals",
+      "version": "dfd14712"
+    },
+    {
+      "id": "CN_010",
+      "file": "clips/CN_010.ogg",
+      "text": "時はまだあの方を悼んでいるし、足もそれほど早くはない。歩き疲れたのなら、腰を下ろしてお休みなさいな。",
+      "asrText": "時はまだあの肩を痛んでいるし足もそれほど早くはない歩き疲れたのなら腰を下ろしてお休みなさいな",
+      "cnText": "时间还在为祂哀悼，溜走的速度也没那么快，如果走累了，就坐下来休息吧。",
+      "duration": 13.4,
+      "sourceStart": 262.9,
+      "sourceEnd": 276.3,
+      "tags": [
+        "HOME_WAIT"
+      ],
+      "stem": "vocals",
+      "version": "d833a6e1"
+    },
+    {
+      "id": "CN_011",
+      "file": "clips/CN_011.ogg",
+      "text": "誕生、存在、消滅。あたしたち一族の血脈に関わるものは、今となってはもう欠片しか残っていないわ……興味があるなら、ここのお話を少しずつしてあげる。",
+      "asrText": "誕生存在消滅私たち一族の血脈に関わる者は今となってはもう欠片しか残っていないわ興味があるならここのお話を少しずつしてあげる",
+      "cnText": "诞生、存在、消亡，关于我那亲源血脉的一切，如今只剩下碎片留在这了……如果你感兴趣的话，这里的故事，我会慢慢说给你听。",
+      "duration": 19.08,
+      "sourceStart": 276.88,
+      "sourceEnd": 295.96,
+      "tags": [
+        "GACHA"
+      ],
+      "stem": "vocals",
+      "version": "04420291"
+    },
+    {
+      "id": "CN_012",
+      "file": "clips/CN_012.ogg",
+      "text": "ほんと、狭苦しい檻ね。",
+      "asrText": "本当狭苦しい檻ね",
+      "cnText": "这狭小的囚笼啊。",
+      "duration": 3.74,
+      "sourceStart": 296.24,
+      "sourceEnd": 299.98,
+      "tags": [
+        "LEVEL_UP"
+      ],
+      "stem": "vocals",
+      "version": "0405abbf"
+    },
+    {
+      "id": "CN_013",
+      "file": "clips/CN_013.ogg",
+      "text": "知り合ってこんなに経つのに、いっつも同じプレゼントね……もちろん、気に入っているわよ。",
+      "asrText": "知り合ってこんなに経つのにいつも同じぷれぜんとねもちろん気に入っているわよ",
+      "cnText": "我们都认识多久了，总是送一样的礼物……我当然是很喜欢的。",
+      "duration": 7.42,
+      "sourceStart": 300.24,
+      "sourceEnd": 307.66,
+      "tags": [
+        "EVOLVE_ONE"
+      ],
+      "stem": "vocals",
+      "version": "80af3f17"
+    },
+    {
+      "id": "CN_014",
+      "file": "clips/CN_014.ogg",
+      "text": "見て、太陽が出たよ。あったかいわね。こうしてずっとこもって、歳月のしつこい追撃から逃れるのも、悪くないように思うわ。",
+      "asrText": "え太陽が出たよあったかいわねこうしてずっとこもって彩月のしつこい追撃から逃れるのも悪くないように思うわ",
+      "cnText": "看哪，出太阳了，暖洋洋的。就这样窝着，躲过岁月年华的围追堵截，好像也不错。",
+      "duration": 12.94,
+      "sourceStart": 308.78,
+      "sourceEnd": 321.72,
+      "tags": [
+        "EVOLVE_TWO"
+      ],
+      "stem": "vocals",
+      "version": "2c989392"
+    },
+    {
+      "id": "CN_017",
+      "file": "clips/CN_017.ogg",
+      "text": "水の流れが、煩わしい争いを覆い隠してくれたらいいのにね。",
+      "asrText": "水の流れが悪らわしい争いを追い隠してくれたらいいのにね",
+      "cnText": "我多么希望，水流能漫过这些麻烦的是非对错呀。",
+      "duration": 6.9,
+      "sourceStart": 322.36,
+      "sourceEnd": 329.26,
+      "tags": [
+        "SQUAD"
+      ],
+      "stem": "vocals",
+      "version": "62dbe51b"
+    },
+    {
+      "id": "CN_018",
+      "file": "clips/CN_018.ogg",
+      "text": "あなたは、彼らをどう理解しているの？どうやって……理解してもらってるの？",
+      "asrText": "あなたは彼らをどう理解しているのどうやって理解してもらってるの",
+      "cnText": "你是如何理解他们的？又是如何……让他们理解你的？",
+      "duration": 8.28,
+      "sourceStart": 329.54,
+      "sourceEnd": 337.82,
+      "tags": [
+        "SQUAD_FIRST"
+      ],
+      "stem": "vocals",
+      "version": "413d3c42"
+    },
+    {
+      "id": "CN_019",
+      "file": "clips/CN_019.ogg",
+      "text": "しばらくこっちを見ないでくれる？少し……水の流れを緩やかにしたいの。ずっと昔、一族の人たちがしていたように。",
+      "asrText": "しばらくこっちを見ないでくれる少し水の流れを緩やかにしたいのずっと昔一族の人たちがしていたように",
+      "cnText": "先别看我好吗？我想……让水流放松片刻，就像很久以前，族人们曾做的那样。",
+      "duration": 13.7,
+      "sourceStart": 338.16,
+      "sourceEnd": 351.86,
+      "tags": [
+        "BATTLE_START"
+      ],
+      "stem": "vocals",
+      "version": "3b92dadf"
+    },
+    {
+      "id": "CN_020",
+      "file": "clips/CN_020.ogg",
+      "text": "命が滅びに向かう時、あたしには何ができるかしら？",
+      "asrText": "命が滅びに向かう時私には何ができるかしら",
+      "cnText": "生命在走向衰亡。我究竟能做些什么呢？",
+      "duration": 5.52,
+      "sourceStart": 352.34,
+      "sourceEnd": 357.86,
+      "tags": [
+        "BATTLE_FACE_ENEMY"
+      ],
+      "stem": "vocals",
+      "version": "e0d76ba8"
+    },
+    {
+      "id": "CN_021",
+      "file": "clips/CN_021.ogg",
+      "text": "なぁに？",
+      "asrText": "なに?",
+      "cnText": "我在听哦。",
+      "duration": 1,
+      "sourceStart": 358.4,
+      "sourceEnd": 359.4,
+      "tags": [
+        "BATTLE_SELECT"
+      ],
+      "stem": "vocals",
+      "version": "6fe0efa7",
+      "note": "pro-accepted-short-clip; 48k 重切（1.0s，fade 10/20）"
+    },
+    {
+      "id": "CN_022",
+      "file": "clips/CN_022.ogg",
+      "text": "あたしの助けが必要かしら？",
+      "asrText": "私の助けが必要かしら",
+      "cnText": "要我帮你想想办法吗？",
+      "duration": 2.28,
+      "sourceStart": 359.9,
+      "sourceEnd": 362.18,
+      "tags": [
+        "BATTLE_SELECT"
+      ],
+      "stem": "vocals",
+      "version": "83621cb1"
+    },
+    {
+      "id": "CN_023",
+      "file": "clips/CN_023.ogg",
+      "text": "これは……先祖たちが雨雲を迎える時の動きよ。",
+      "asrText": "先祖たちが雨雲を迎える時の動きよ",
+      "cnText": "这是……先祖们迎接雨云的动作。",
+      "duration": 4.74,
+      "sourceStart": 363.38,
+      "sourceEnd": 368.12,
+      "tags": [
+        "BATTLE_PLACE"
+      ],
+      "stem": "vocals",
+      "version": "55996d42"
+    },
+    {
+      "id": "CN_024",
+      "file": "clips/CN_024.ogg",
+      "text": "この水滴はどこに落ちるのかしら。",
+      "asrText": "この水滴はどこに落ちるのかしら",
+      "cnText": "这滴水珠会落在哪里呢？",
+      "duration": 2.98,
+      "sourceStart": 368.52,
+      "sourceEnd": 371.5,
+      "tags": [
+        "BATTLE_PLACE"
+      ],
+      "stem": "vocals",
+      "version": "527a603a"
+    },
+    {
+      "id": "CN_025",
+      "file": "clips/CN_025.ogg",
+      "text": "夢の中で目覚める。",
+      "asrText": "夢の中で目覚める",
+      "cnText": "在梦想中苏生。",
+      "duration": 2.6,
+      "sourceStart": 372.16,
+      "sourceEnd": 374.76,
+      "tags": [
+        "BATTLE_SKILL_1"
+      ],
+      "stem": "vocals",
+      "version": "b5a999d0"
+    },
+    {
+      "id": "CN_026",
+      "file": "clips/CN_026.ogg",
+      "text": "宿願の中に流れる。",
+      "asrText": "宿願の中に流れる",
+      "cnText": "在夙愿中流淌。",
+      "duration": 1.92,
+      "sourceStart": 375,
+      "sourceEnd": 376.92,
+      "tags": [
+        "BATTLE_SKILL_2"
+      ],
+      "stem": "vocals",
+      "version": "9583944a"
+    },
+    {
+      "id": "CN_027",
+      "file": "clips/CN_027.ogg",
+      "text": "約束の中に凝る。",
+      "asrText": "約束の中にこごる",
+      "cnText": "在承诺中凝结。",
+      "duration": 2.2,
+      "sourceStart": 377.68,
+      "sourceEnd": 379.88,
+      "tags": [
+        "BATTLE_SKILL_3"
+      ],
+      "stem": "vocals",
+      "version": "6d27df71"
+    },
+    {
+      "id": "CN_028",
+      "file": "clips/CN_028.ogg",
+      "text": "過去には戻れない。そこに答えはない。",
+      "asrText": "過去には戻れないそこに答えはない",
+      "cnText": "但我回不到过去，过去不是答案。",
+      "duration": 3.86,
+      "sourceStart": 380.34,
+      "sourceEnd": 384.2,
+      "tags": [
+        "BATTLE_SKILL_4"
+      ],
+      "stem": "vocals",
+      "version": "e0ff4632"
+    },
+    {
+      "id": "CN_029",
+      "file": "clips/CN_029.ogg",
+      "text": "手を貸して、ドクター――あ、えっと……単にあたしの感じていることを共有したかったの。安心して、水に濡れたりはしないから。",
+      "asrText": "手を貸してどくたあっえっと単に私の感じていることを共有したかったの安心して水に濡れたりはしないから",
+      "cnText": "伸出手，博士——啊，嗯……我只是想跟你分享我的思绪，别担心，不会让你淋湿的。",
+      "duration": 14.44,
+      "sourceStart": 384.78,
+      "sourceEnd": 399.22,
+      "tags": [
+        "FOUR_STAR"
+      ],
+      "stem": "vocals",
+      "version": "b0629c54"
+    },
+    {
+      "id": "CN_030",
+      "file": "clips/CN_030.ogg",
+      "text": "木の葉が揺れて、水の流れが囁いている。今のあたしは昔より、もっと彼女たちの気持ちが分かるわ……ああ、嬉しいのよ。彼女たちはただとても嬉しいの、本当よ。",
+      "asrText": "小野花が揺れて水の流れが囁いている今の私は昔よりもっと彼女たちの気持ちがわかるわああ嬉しいのよ彼女たちはただとても嬉しいの本当よ",
+      "cnText": "叶片在振动，水流在低鸣。现在的我，比过去更加理解她们的情绪……唔，是开心啦，她们只是很开心，真的。",
+      "duration": 21.34,
+      "sourceStart": 399.94,
+      "sourceEnd": 421.28,
+      "tags": [
+        "THREE_STAR"
+      ],
+      "stem": "vocals",
+      "version": "ab30a69b"
+    },
+    {
+      "id": "CN_031",
+      "file": "clips/CN_031.ogg",
+      "text": "行っちゃったわね。きっと自分の戻れる場所を知っているんでしょうね？",
+      "asrText": "行っちゃったわねきっと自分の戻れる場所を知っているんでしょうね",
+      "cnText": "他们走了。他们一定知道自己可以回到哪里吧？",
+      "duration": 7.58,
+      "sourceStart": 421.76,
+      "sourceEnd": 429.34,
+      "tags": [
+        "TWO_STAR"
+      ],
+      "stem": "vocals",
+      "version": "6e1bfe3a"
+    },
+    {
+      "id": "CN_032",
+      "file": "clips/CN_032.ogg",
+      "text": "水はあたしたちを安全な場所に連れて行ってくれるわ。しっかり掴まって、目を瞑っていてね。",
+      "asrText": "水はあたしたちを安全な場所に連れて行ってくれるわしっかりつかまって目をつむっていてね",
+      "cnText": "水可以把我们带去安全的地方。别松手哦，也别睁眼。",
+      "duration": 8.06,
+      "sourceStart": 429.6,
+      "sourceEnd": 437.66,
+      "tags": [
+        "LOSE"
+      ],
+      "stem": "vocals",
+      "version": "be6c776b"
+    },
+    {
+      "id": "CN_033",
+      "file": "clips/CN_033.ogg",
+      "text": "何もかも昔のままってのも悪いことじゃないわ。",
+      "asrText": "何もかも昔のままってのも悪いことじゃないわ",
+      "cnText": "一切照旧，也不算是件坏事。",
+      "duration": 4.46,
+      "sourceStart": 438.2,
+      "sourceEnd": 442.66,
+      "tags": [
+        "BUILDING_PLACE"
+      ],
+      "stem": "vocals",
+      "version": "bda37cad"
+    },
+    {
+      "id": "CN_034",
+      "file": "clips/CN_034.ogg",
+      "text": "ふぅ、少なくとも、あたしに触れられる人として、まだあなたがいるわね。",
+      "asrText": "少なくとも私に触れられる人としてまだあなたがいるわね",
+      "cnText": "呼，至少还有你能触碰到我。",
+      "duration": 7.54,
+      "sourceStart": 443.48,
+      "sourceEnd": 451.02,
+      "tags": [
+        "BUILDING_TOUCHING"
+      ],
+      "stem": "vocals",
+      "version": "7b103223"
+    },
+    {
+      "id": "CN_036",
+      "file": "clips/CN_036.ogg",
+      "text": "こんな風に長くて終わりの見えない探索の旅は、あたしにとって簡単じゃないわ。でもあなたはもう慣れちゃったんじゃないかしら？はぁ、あんまり頑張りすぎないでね。一緒に散歩でも行きましょう。",
+      "asrText": "こんな風に長くて終わりの見えない探索の旅は私にとって簡単じゃないわでもあなたはもう慣れちゃったんじゃないかしらあんまり頑張りすぎないでね一緒に散歩でも行きましょう",
+      "cnText": "这样漫长的探寻之旅，对我来说可不容易，但你是不是已经很习惯了？唉，可别太辛苦了，陪我去散散步吧。",
+      "duration": 21.78,
+      "sourceStart": 451.3,
+      "sourceEnd": 473.08,
+      "tags": [
+        "BUILDING_FAVOR_BUBBLE"
+      ],
+      "stem": "vocals",
+      "version": "1a250b2c"
+    },
+    {
+      "id": "CN_037",
+      "file": "clips/CN_037.ogg",
+      "text": "アークナイツ。",
+      "asrText": "あくないつ",
+      "cnText": "明日方舟。",
+      "duration": 1.46,
+      "sourceStart": 473.84,
+      "sourceEnd": 475.3,
+      "tags": [
+        "LOADING_PANEL"
+      ],
+      "stem": "vocals",
+      "version": "8d521306"
+    },
+    {
+      "id": "CN_038",
+      "file": "clips/CN_038.ogg",
+      "text": "層に積み重なった結晶に時の痕跡はないわ。サーミの同胞たちも、琥珀の中に暦を刻んだりはしない。そうよ、あたしたちは未来を望めない種族で、長すぎて静止しているのに近い命を抱いているの。端末を置いて、ドクター。今日が普段とは違う日になってほしくないのかしら？",
+      "asrText": "そうに積み重なった結晶に時の痕跡はないわさみの同胞たちも琥珀の中に小読みを刻んだりはしないそうよあたしたちは未来を望めない種族で長すぎて生死しているのに近い命を抱いているの端末を置いてどくた今日が普段とは違う日になってほしくないのかしらご視聴ありがとうございました",
+      "cnText": "那层层堆积的结晶中没有时间的痕迹，萨米的同胞也不会在琥珀里刻下日历。是啊，我们是无法看向未来的种族，怀抱着漫长到几乎静止的生命。放下终端吧，博士，你不希望今天和平时不同吗？",
+      "duration": 30.42,
+      "sourceStart": 475.86,
+      "sourceEnd": 506.28,
+      "tags": [
+        "NEW_YEAR"
+      ],
+      "stem": "vocals",
+      "version": "086b05d5",
+      "note": "pro-accepted-whisper-tail-hallucination"
+    },
+    {
+      "id": "CN_042",
+      "file": "clips/CN_042.ogg",
+      "text": "ね、しっかり休んでいる？……はぁ、ちゃんと自分を労わって。お願いだから、ね？あなたまでいつの間にか泡になっちゃったりしたら嫌よ。",
+      "asrText": "ねえしっかり休んでいるふぅちゃんと自分をいたわってお願いだからねあなたまでいつの間にか泡になっちゃったりしたら嫌よ",
+      "cnText": "唔，你休息够了吗？……唉，照顾好自己，好吗？你可不能悄悄地变成泡沫啊。",
+      "duration": 16.78,
+      "sourceStart": 506.98,
+      "sourceEnd": 523.76,
+      "tags": [
+        "GREETING"
+      ],
+      "stem": "vocals",
+      "version": "976d8a9e"
+    },
+    {
+      "id": "CN_044",
+      "file": "clips/CN_044.ogg",
+      "text": "時の燃え殻の下には、エルフたちの忘れられた物語や知識があるわ。けど、あたしですらそれを読み解くことはできないの。過去を掘り返すことは、傷を癒したり、誕生を祝うのよりもずっと重いわ。ドクターは、どうやってこういうことに向き合っているの？",
+      "asrText": "時の萌え柄の下にはえるふたちの忘れられた物語や知識があるわけどあたしですらそれを読み解くことはできないの過去を掘り返すことは傷を癒したり誕生を祝うのよりもずっと重いわどくたはどうやってこういうことに向き合っているの",
+      "cnText": "时间的灰烬下面，埋着精灵们被遗忘的故事和知识，但就连我自己也无法读懂它们。翻动过去，可比疗愈创口、祝福新生要沉重多了。博士，你是如何面对这一切的呢？",
+      "duration": 25.66,
+      "sourceStart": 524.9,
+      "sourceEnd": 550.56,
+      "tags": [
+        "ANNIVERSARY"
+      ],
+      "stem": "vocals",
+      "version": "1a9fc4b3"
+    },
+    {
+      "id": "CN_100",
+      "file": "clips/CN_100.ogg",
+      "text": "ごめんなさい",
+      "asrText": "ごめんなさい",
+      "cnText": "对不起，抱歉",
+      "duration": 1.72,
+      "version": "synth1"
+    },
+    {
+      "id": "CN_101",
+      "file": "clips/CN_101.ogg",
+      "text": "ごめんね",
+      "asrText": "ごめんね",
+      "cnText": "抱歉呀",
+      "duration": 1.71,
+      "version": "synth1"
+    },
+    {
+      "id": "CN_102",
+      "file": "clips/CN_102.ogg",
+      "text": "申し訳ない",
+      "asrText": "申し訳ない",
+      "cnText": "真是过意不去",
+      "duration": 1.86,
+      "version": "synth1"
+    },
+    {
+      "id": "CN_103",
+      "file": "clips/CN_103.ogg",
+      "text": "うん",
+      "asrText": "うん",
+      "cnText": "嗯",
+      "duration": 1.71,
+      "version": "synth1"
+    },
+    {
+      "id": "CN_104",
+      "file": "clips/CN_104.ogg",
+      "text": "そうだね",
+      "asrText": "そうだね",
+      "cnText": "是呢",
+      "duration": 1.71,
+      "version": "synth1"
+    },
+    {
+      "id": "CN_105",
+      "file": "clips/CN_105.ogg",
+      "text": "いいよ",
+      "asrText": "いいよ",
+      "cnText": "好啊，可以哦",
+      "duration": 1.71,
+      "version": "synth1"
+    },
+    {
+      "id": "CN_106",
+      "file": "clips/CN_106.ogg",
+      "text": "違うと思う",
+      "asrText": "違うと思う",
+      "cnText": "我觉得不对",
+      "duration": 1.94,
+      "version": "synth1"
+    },
+    {
+      "id": "CN_107",
+      "file": "clips/CN_107.ogg",
+      "text": "そうでもないよ",
+      "asrText": "そうでもないよ",
+      "cnText": "也不至于这样吧",
+      "duration": 2.34,
+      "version": "synth1"
+    },
+    {
+      "id": "CN_108",
+      "file": "clips/CN_108.ogg",
+      "text": "え？どういうこと？",
+      "asrText": "え？どういうこと？",
+      "cnText": "诶？什么意思？",
+      "duration": 3.02,
+      "version": "synth1"
+    },
+    {
+      "id": "CN_109",
+      "file": "clips/CN_109.ogg",
+      "text": "え？何？",
+      "asrText": "え？何？",
+      "cnText": "诶？什么？",
+      "duration": 2.72,
+      "version": "synth1"
+    },
+    {
+      "id": "CN_110",
+      "file": "clips/CN_110.ogg",
+      "text": "なるほど",
+      "asrText": "なるほど",
+      "cnText": "原来如此",
+      "duration": 1.71,
+      "version": "synth1"
+    },
+    {
+      "id": "CN_111",
+      "file": "clips/CN_111.ogg",
+      "text": "わかった",
+      "asrText": "わかった",
+      "cnText": "明白了",
+      "duration": 1.71,
+      "version": "synth1"
+    },
+    {
+      "id": "CN_112",
+      "file": "clips/CN_112.ogg",
+      "text": "そういうことね",
+      "asrText": "そういうことね",
+      "cnText": "是这么回事呀",
+      "duration": 1.94,
+      "version": "synth1"
+    },
+    {
+      "id": "CN_113",
+      "file": "clips/CN_113.ogg",
+      "text": "すごいね",
+      "asrText": "すごいね",
+      "cnText": "好厉害呢",
+      "duration": 1.76,
+      "version": "synth1"
+    },
+    {
+      "id": "CN_114",
+      "file": "clips/CN_114.ogg",
+      "text": "上手だね",
+      "asrText": "上手だね",
+      "cnText": "做得好真棒，很拿手呢",
+      "duration": 1.82,
+      "version": "synth1"
+    },
+    {
+      "id": "CN_115",
+      "file": "clips/CN_115.ogg",
+      "text": "えらいね",
+      "asrText": "えらいね",
+      "cnText": "真了不起呢",
+      "duration": 1.71,
+      "version": "synth1"
+    },
+    {
+      "id": "CN_116",
+      "file": "clips/CN_116.ogg",
+      "text": "こんにちは",
+      "asrText": "こんにちは",
+      "cnText": "你好",
+      "duration": 1.71,
+      "version": "synth1"
+    },
+    {
+      "id": "CN_117",
+      "file": "clips/CN_117.ogg",
+      "text": "おはよう",
+      "asrText": "おはよう",
+      "cnText": "早上好",
+      "duration": 1.71,
+      "version": "synth1"
+    },
+    {
+      "id": "CN_118",
+      "file": "clips/CN_118.ogg",
+      "text": "ありがとう",
+      "asrText": "ありがとう",
+      "cnText": "谢谢你",
+      "duration": 1.71,
+      "version": "synth1"
+    },
+    {
+      "id": "CN_119",
+      "file": "clips/CN_119.ogg",
+      "text": "またね",
+      "asrText": "またね",
+      "cnText": "再见啦",
+      "duration": 1.71,
+      "version": "synth1"
+    },
+    {
+      "id": "CN_120",
+      "file": "clips/CN_120.ogg",
+      "text": "はい",
+      "asrText": "はい",
+      "cnText": "是的",
+      "duration": 1.71,
+      "version": "synth1"
+    },
+    {
+      "id": "CN_121",
+      "file": "clips/CN_121.ogg",
+      "text": "聞いてるよ",
+      "asrText": "聞いてるよ",
+      "cnText": "我在听着呢",
+      "duration": 1.71,
+      "version": "synth1"
+    },
+    {
+      "id": "CN_122",
+      "file": "clips/CN_122.ogg",
+      "text": "えっと",
+      "asrText": "えっと",
+      "cnText": "那个……（组织语言）",
+      "duration": 1.71,
+      "version": "synth1"
+    },
+    {
+      "id": "CN_123",
+      "file": "clips/CN_123.ogg",
+      "text": "そう",
+      "asrText": "そう",
+      "cnText": "是这样啊",
+      "duration": 1.71,
+      "version": "synth1"
+    },
+    {
+      "id": "CN_124",
+      "file": "clips/CN_124.ogg",
+      "text": "おやすみ",
+      "asrText": "おやすみ",
+      "cnText": "晚安",
+      "duration": 1.72,
+      "version": "synth1"
+    },
+    {
+      "id": "CN_125",
+      "file": "clips/CN_125.ogg",
+      "text": "だいじょうぶ",
+      "asrText": "だいじょうぶ",
+      "cnText": "没事的，不要紧",
+      "duration": 1.71,
+      "version": "synth1"
+    },
+    {
+      "id": "CN_200",
+      "file": "clips/CN_200.ogg",
+      "text": "今日はいい天気ね。",
+      "asrText": "今日はいい天気ね。",
+      "cnText": "今天天气真好呢。",
+      "duration": 2.3,
+      "version": "synth2"
+    },
+    {
+      "id": "CN_201",
+      "file": "clips/CN_201.ogg",
+      "text": "もうこんな時間なのね。",
+      "asrText": "もうこんな時間なのね。",
+      "cnText": "已经这个时间了呢。",
+      "duration": 2.66,
+      "version": "synth2"
+    },
+    {
+      "id": "CN_202",
+      "file": "clips/CN_202.ogg",
+      "text": "雨が降りそうね。",
+      "asrText": "雨が降りそうね。",
+      "cnText": "好像要下雨了呢。",
+      "duration": 2.26,
+      "version": "synth2"
+    },
+    {
+      "id": "CN_203",
+      "file": "clips/CN_203.ogg",
+      "text": "風が気持ちいいわ。",
+      "asrText": "風が気持ちいいわ。",
+      "cnText": "风很舒服呢。",
+      "duration": 2.4,
+      "version": "synth2"
+    },
+    {
+      "id": "CN_204",
+      "file": "clips/CN_204.ogg",
+      "text": "ご飯にしましょうか。",
+      "asrText": "ご飯にしましょうか。",
+      "cnText": "我们吃饭吧？",
+      "duration": 2.3,
+      "version": "synth2"
+    },
+    {
+      "id": "CN_205",
+      "file": "clips/CN_205.ogg",
+      "text": "何か食べた？",
+      "asrText": "何か食べた？",
+      "cnText": "吃过了吗？",
+      "duration": 2.04,
+      "version": "synth2"
+    },
+    {
+      "id": "CN_206",
+      "file": "clips/CN_206.ogg",
+      "text": "温かいものがいいわね。",
+      "asrText": "温かいものがいいわね。",
+      "cnText": "还是吃点热乎的好呢。",
+      "duration": 2.74,
+      "version": "synth2"
+    },
+    {
+      "id": "CN_207",
+      "file": "clips/CN_207.ogg",
+      "text": "少し休みましょう。",
+      "asrText": "少し休みましょう。",
+      "cnText": "稍微休息一下吧。",
+      "duration": 2.22,
+      "version": "synth2"
+    },
+    {
+      "id": "CN_208",
+      "file": "clips/CN_208.ogg",
+      "text": "無理しないでね。",
+      "asrText": "無理しないでね。",
+      "cnText": "别太勉强自己哦。",
+      "duration": 2.04,
+      "version": "synth2"
+    },
+    {
+      "id": "CN_209",
+      "file": "clips/CN_209.ogg",
+      "text": "よく眠れた？",
+      "asrText": "よく眠れた？",
+      "cnText": "睡得好吗？",
+      "duration": 2.12,
+      "version": "synth2"
+    },
+    {
+      "id": "CN_210",
+      "file": "clips/CN_210.ogg",
+      "text": "お誕生日おめでとう。",
+      "asrText": "お誕生日おめでとう。",
+      "cnText": "生日快乐。",
+      "duration": 2.66,
+      "version": "synth2"
+    },
+    {
+      "id": "CN_211",
+      "file": "clips/CN_211.ogg",
+      "text": "いい一年になりますように。",
+      "asrText": "いい一年になりますように。",
+      "cnText": "愿你有美好的一年。",
+      "duration": 2.98,
+      "version": "synth2"
+    },
+    {
+      "id": "CN_212",
+      "file": "clips/CN_212.ogg",
+      "text": "あなたの幸せを祈ってるわ。",
+      "asrText": "あなたの幸せを祈ってるわ。",
+      "cnText": "我祈祷你幸福。",
+      "duration": 2.98,
+      "version": "synth2"
+    },
+    {
+      "id": "CN_213",
+      "file": "clips/CN_213.ogg",
+      "text": "試験がうまくいきますように。",
+      "asrText": "試験がうまくいきますように。",
+      "cnText": "愿考试顺利。",
+      "duration": 2.98,
+      "version": "synth2"
+    },
+    {
+      "id": "CN_214",
+      "file": "clips/CN_214.ogg",
+      "text": "えっ、本当？",
+      "asrText": "えっ、本当？",
+      "cnText": "诶，真的吗？",
+      "duration": 2.88,
+      "version": "synth2"
+    },
+    {
+      "id": "CN_215",
+      "file": "clips/CN_215.ogg",
+      "text": "まさか、そんな。",
+      "asrText": "まさか、そんな。",
+      "cnText": "不会吧，怎么会。",
+      "duration": 2.08,
+      "version": "synth2"
+    },
+    {
+      "id": "CN_216",
+      "file": "clips/CN_216.ogg",
+      "text": "びっくりしたわ。",
+      "asrText": "びっくりしたわ。",
+      "cnText": "吓我一跳呢。",
+      "duration": 2.08,
+      "version": "synth2"
+    },
+    {
+      "id": "CN_217",
+      "file": "clips/CN_217.ogg",
+      "text": "そんなことがあるの？",
+      "asrText": "そんなことがあるの？",
+      "cnText": "竟然会有这种事？",
+      "duration": 2.26,
+      "version": "synth2"
+    },
+    {
+      "id": "CN_218",
+      "file": "clips/CN_218.ogg",
+      "text": "会いたいわ。",
+      "asrText": "会いたいわ。",
+      "cnText": "想见你。",
+      "duration": 1.76,
+      "version": "synth2"
+    },
+    {
+      "id": "CN_219",
+      "file": "clips/CN_219.ogg",
+      "text": "ずっと考えてたの。",
+      "asrText": "ずっと考えてたの。",
+      "cnText": "一直在想着你。",
+      "duration": 2.4,
+      "version": "synth2"
+    },
+    {
+      "id": "CN_220",
+      "file": "clips/CN_220.ogg",
+      "text": "早く会えるといいわね。",
+      "asrText": "早く会えるといいわね。",
+      "cnText": "希望能早点见到你呢。",
+      "duration": 2.66,
+      "version": "synth2"
+    },
+    {
+      "id": "CN_221",
+      "file": "clips/CN_221.ogg",
+      "text": "待ってるわ。",
+      "asrText": "待ってるわ。",
+      "cnText": "我等着你。",
+      "duration": 1.68,
+      "version": "synth2"
+    },
+    {
+      "id": "CN_222",
+      "file": "clips/CN_222.ogg",
+      "text": "ゆっくりでいいわよ。",
+      "asrText": "ゆっくりでいいわよ。",
+      "cnText": "慢慢来也没关系哦。",
+      "duration": 2.4,
+      "version": "synth2"
+    },
+    {
+      "id": "CN_223",
+      "file": "clips/CN_223.ogg",
+      "text": "ここで待ってる。",
+      "asrText": "ここで待ってる。",
+      "cnText": "我在这里等你。",
+      "duration": 1.94,
+      "version": "synth2"
+    },
+    {
+      "id": "CN_224",
+      "file": "clips/CN_224.ogg",
+      "text": "急がないと！",
+      "asrText": "急がないと！",
+      "cnText": "得快点才行！",
+      "duration": 1.94,
+      "version": "synth2"
+    },
+    {
+      "id": "CN_225",
+      "file": "clips/CN_225.ogg",
+      "text": "もう、遅れちゃうわ。",
+      "asrText": "もう、遅れちゃうわ。",
+      "cnText": "哎呀，要迟到了。",
+      "duration": 2.14,
+      "version": "synth2"
+    },
+    {
+      "id": "CN_226",
+      "file": "clips/CN_226.ogg",
+      "text": "早く行きましょう。",
+      "asrText": "早く行きましょう。",
+      "cnText": "快点走吧。",
+      "duration": 2.12,
+      "version": "synth2"
+    }
+  ]
+}

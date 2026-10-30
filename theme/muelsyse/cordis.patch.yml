@@ -1,0 +1,16 @@
+- insert:
+    - id: theme-muelsyse
+      name: dsh-theme-muelsyse
+    - id: muelsyse-voice
+      name: dsh-plugin-muelsyse-voice
+      config:
+        mode: clips
+        thresholdShort: 0.45
+        thresholdLong: 0.42
+        maxClips: 2
+# ---- muelsyse-persona: 缪尔赛思语气 ----
+- insert:
+    - id: muelsyse-persona
+      name: dsh-plugin-muelsyse-persona
+      config:
+        enabled: true

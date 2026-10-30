@@ -1,0 +1,24 @@
+{
+  "name": "dsh-plugin-muelsyse-persona",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Muelsyse companion persona: a configurable system-prompt section (Ecology / Rhine Lab voice) and an idempotent HTTP control (POST /enabled).",
+  "license": "MIT",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

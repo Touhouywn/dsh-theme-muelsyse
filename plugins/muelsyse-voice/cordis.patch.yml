@@ -1,0 +1,8 @@
+- insert:
+    - id: muelsyse-voice
+      name: dsh-plugin-muelsyse-voice
+      config:
+        mode: clips
+        thresholdShort: 0.45
+        thresholdLong: 0.42
+        maxClips: 2
