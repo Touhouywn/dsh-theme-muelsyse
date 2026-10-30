@@ -124,7 +124,7 @@ pwsh -NoProfile -File .\install.ps1 -EnableLegacyHub
 
 只有显式 `synth: true` 才会用到。环境包（Python + GPT-SoVITS 权重）**不随本包分发**，请从网盘下载：
 
-- **网盘链接：待补（占位）** `[MUELSYSE_SOVITS_NETDISK_URL]`
+- **网盘链接：待补（占位）** `[[MUELSYSE_SOVITS_NETDISK_URL]`](https://pan.quark.cn/s/7331406b7b40?pwd=ycKX)
 - 建议解压到 `%USERPROFILE%\muelsyse-sovits\GPT-SoVITS`，或设置 `MUELSYSE_SOVITS_ROOT`。
 
 翻译 API key 只放在环境变量里，**不要写进 README、patch 或仓库**：
