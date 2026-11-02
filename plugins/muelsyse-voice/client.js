@@ -83,6 +83,141 @@ window.__ModuleLoader__.load({
       ? Symbol.for('dsh.muelsyse.voice.applied')
       : '__dshMuelsyseVoiceApplied'
 
+    // ── 诊断探针 ────────────────────────────────────────────────────────────
+    // 只观测、不判定：所有 probe() 都写在原有分支之后/旁边，没有新增任何
+    // 「是否出声」的条件。链路：reply_seen → armed → trigger → speak_sent →
+    // speak_back → match → play / play_error；不该出声时统一记 silent + reason。
+    // window.__MUELSYSE_DEBUG__.dump() 打印并返回快照；localStorage 同步一份。
+    var DEBUG_KEY = 'muelsyse-voice-debug'
+    var DEBUG_MAX = 50
+    var DEBUG_BOOT_AT = Date.now()
+    var debugLog = []
+    var debugPersistOk = true
+    var openingProbeDone = false
+
+    /** t = 相对页面加载的毫秒数（performance.now），退化时用墙钟差值。 */
+    function probeNow() {
+      try {
+        if (window.performance && typeof window.performance.now === 'function') {
+          return Math.round(window.performance.now())
+        }
+      } catch (error) {
+        // 退化到墙钟
+      }
+      return Date.now() - DEBUG_BOOT_AT
+    }
+
+    function persistProbe() {
+      if (!debugPersistOk) return
+      try {
+        window.localStorage.setItem(DEBUG_KEY, JSON.stringify(debugLog))
+      } catch (error) {
+        // 隐私模式 / 配额满：只留内存，不再反复重试。
+        debugPersistOk = false
+      }
+    }
+
+    /** 一条探针：t + event + 关键数据；字符串一律截到 60 字，避免把正文写爆。 */
+    function probe(event, data) {
+      try {
+        var entry = { t: probeNow(), event: String(event) }
+        if (data && typeof data === 'object') {
+          for (var key in data) {
+            if (!Object.prototype.hasOwnProperty.call(data, key)) continue
+            var value = data[key]
+            if (value === undefined) continue
+            if (typeof value === 'string' && value.length > 60) value = value.slice(0, 60) + '…'
+            entry[key] = value
+          }
+        }
+        debugLog.push(entry)
+        while (debugLog.length > DEBUG_MAX) debugLog.shift()
+        persistProbe()
+      } catch (error) {
+        // 探针永远不能影响发声。
+      }
+    }
+
+    /**
+     * 把 /speak 的语义计划压成一条 match：intent / via / score / matched /
+     * technical / segments 数。analysis 由宿主返回，这里只读，不改结构。
+     */
+    function probePlan(plan) {
+      var analysis = plan && Array.isArray(plan.analysis) ? plan.analysis : []
+      var stats = plan && plan.stats && typeof plan.stats === 'object' ? plan.stats : {}
+      var segments = plan && Array.isArray(plan.segments) ? plan.segments : []
+      var entry = segments.length > 0 ? segments[0] : null
+      if (entry === null) {
+        for (var index = 0; index < analysis.length; index += 1) {
+          var item = analysis[index]
+          if (!item || item.skipped === 'no-intent' || item.skipped === 'technical') continue
+          entry = item
+          break
+        }
+      }
+      var matched = false
+      for (var cursor = 0; cursor < analysis.length; cursor += 1) {
+        var row = analysis[cursor]
+        if (!row) continue
+        if (row.skipped === 'no-clip' || (row.skipped === undefined && row.via !== 'echo')) {
+          matched = true
+          break
+        }
+      }
+      if (analysis.length === 0 && segments.length > 0) matched = true
+      var technicalCount = Number(stats.skippedTechnical) || 0
+      probe('match', {
+        intent: entry && entry.intent !== undefined ? String(entry.intent) : null,
+        via: entry && entry.via !== undefined ? String(entry.via) : null,
+        score: entry && entry.score !== undefined ? entry.score : null,
+        matched: matched,
+        technical: technicalCount > 0,
+        technicalCount: technicalCount,
+        segments: segments.length,
+        sentences: Number(stats.sentences) || 0,
+        silentSentences: Number(stats.silent) || 0,
+        mode: plan && plan.mode ? String(plan.mode) : '',
+      })
+      return {
+        analysis: analysis,
+        stats: stats,
+        segments: segments,
+        matched: matched,
+        technicalCount: technicalCount,
+      }
+    }
+
+    /** 控制台入口：打印最近 50 条，同步 localStorage，并返回快照数组。 */
+    function dumpProbe() {
+      persistProbe()
+      var out = debugLog.slice()
+      try {
+        console.log('[muelsyse-voice] debug · ' + out.length + '/' + DEBUG_MAX +
+          ' 条（t = 页面加载后的毫秒）')
+        if (typeof console.table === 'function') console.table(out)
+        else console.log(out)
+        console.log('localStorage["' + DEBUG_KEY + '"] 已同步；dump() 返回快照数组')
+      } catch (error) {
+        // console 不可用不影响返回值。
+      }
+      return out
+    }
+
+    debugLog.dump = dumpProbe
+    debugLog.clear = function () {
+      debugLog.length = 0
+      persistProbe()
+      return debugLog.slice()
+    }
+    debugLog.version = 1
+    debugLog.limit = DEBUG_MAX
+    window.__MUELSYSE_DEBUG__ = debugLog
+    probe('boot', {
+      href: String((window.location && window.location.href) || ''),
+      opening: typeof document === 'undefined' ? false : openingOnScreen(),
+      quietMs: BOOT_QUIET_MS,
+    })
+
     // 客户端语音配置（可选）：`window.__MUELSYSE_VOICE__ = { maxSegments: 2 }`
     // 才放宽每次播报的段数，默认一段。
     var voiceCfg = (typeof window.__MUELSYSE_VOICE__ === 'object' && window.__MUELSYSE_VOICE__) || {}
@@ -583,35 +718,49 @@ window.__ModuleLoader__.load({
         for (var a = 0; added && a < added.length; a += 1) {
           var node = added[a]
           if (node.nodeType !== 1) continue
-          if (isProse(node)) addedProse += 1
+          // 只算助手正文：用户气泡里也有 markdown，按「正文」计数会把一次
+          // 正常提问误判成历史回放。
+          if (isProse(node) && assistantProse(node)) addedProse += 1
           if (isUserRow(node)) addedUsers += 1
           var inner = node.querySelectorAll('[class*="markdown"]')
           for (var p = 0; p < inner.length; p += 1) {
-            if (isProse(inner[p])) addedProse += 1
+            if (isProse(inner[p]) && assistantProse(inner[p])) addedProse += 1
           }
           addedUsers += node.querySelectorAll('[class*="userRow" i], [class*="bubble" i]').length
         }
       }
       if (removed >= REPLAY_REMOVED) return true
       if (addedProse >= REPLAY_ADDED) return true
-      // 用户消息和正文在同一批里冒出来 → 是一次历史回放，不是新的一问一答。
+      // 用户消息和助手正文在同一批里冒出来：多半是历史回填；乐观渲染的
+      // 一问一答也会命中，但调用方用 keepArm 保住了交互门。
       return addedUsers > 0 && addedProse > 0
     }
 
     /**
      * 把屏幕上现有的正文全部归档成「历史」：首屏、欢迎语、换工作区后的回放
      * 都不再触发语音。之后用户动手新长出来的那段才是可念的。
+     *
+     * options.keepArm：真实用户回合里「用户气泡 + 正文」同批挂载时也可能被
+     * isReplay 认成回放，此时不能顺手把用户刚点出来的交互门关掉。只有换工作区 /
+     * 整屏重挂载（container-change、watch-start）才重置 armed。
      */
-    function markBaseline() {
+    function markBaseline(why, options) {
+      var keepArm = !!(options && options.keepArm)
       var transcript = centerCol()
+      var archived = 0
       if (transcript !== null) {
         var blocks = transcript.querySelectorAll('[class*="markdown"]')
         for (var index = 0; index < blocks.length; index += 1) {
           var text = clean(blocks[index].textContent)
-          if (text !== '') rememberSpoken(digest(text))
+          if (text !== '') {
+            rememberSpoken(digest(text))
+            archived += 1
+          }
         }
       }
-      armed = false
+      // 交互门是「用户动过手」的一次性通行证：baseline / replay 归档正文时
+      // 不能把它一起清掉，否则用户发完消息后的第一条回复会被 not-armed 吞掉。
+      if (!keepArm) armed = false
       quietUntil = Date.now() + BOOT_QUIET_MS
       if (fastTimer !== null) {
         clearTimeout(fastTimer)
@@ -623,10 +772,19 @@ window.__ModuleLoader__.load({
         clearTimeout(timer)
         timer = null
       }
+      probe('baseline', {
+        why: why || '',
+        archived: archived,
+        armed: armed,
+        keepArm: keepArm,
+        quietMs: BOOT_QUIET_MS,
+        opening: openingOnScreen(),
+      })
     }
 
     /** 用户点一下、敲一下，这一屏才算「他的」；开屏自动播放阶段永远不会 arm。 */
     function armOnGesture() {
+      var wasArmed = armed
       armed = true
       // 借这次真实手势把 AudioContext 建起来 / 唤醒：预热解码的切片才能直接出声。
       var ctx = ensureCtx()
@@ -636,6 +794,14 @@ window.__ModuleLoader__.load({
         } catch (error) {
           // 唤不醒就退回 HTMLAudio。
         }
+      }
+      if (!wasArmed) {
+        probe('armed', {
+          armed: true,
+          ctx: ctx !== null && typeof ctx.state === 'string' ? ctx.state : 'none',
+          opening: openingOnScreen(),
+          quietLeftMs: Math.max(0, quietUntil - Date.now()),
+        })
       }
     }
 
@@ -660,10 +826,18 @@ window.__ModuleLoader__.load({
           // resume 不了就退回 HTMLAudio，不影响出声。
         }
       }
-      if (!state.enabled || !Array.isArray(segments) || segments.length === 0) return
+      if (!state.enabled || !Array.isArray(segments) || segments.length === 0) {
+        probe('silent', {
+          reason: state.enabled ? 'empty-segments' : 'disabled',
+          stage: 'play',
+          segments: Array.isArray(segments) ? segments.length : 0,
+        })
+        return
+      }
       // 同一回复内一条 clip 只播一次：流式续写触发的第二次计划只播新段。
       var fresh = novelSegments(segments)
       if (fresh.length === 0) {
+        probe('silent', { reason: 'all-played', stage: 'play', segments: segments.length })
         state.mode = 'silent'
         notify()
         if (typeof onDone === 'function') onDone()
@@ -725,12 +899,20 @@ window.__ModuleLoader__.load({
             next()
           }
           var cached = item.url ? clipBuffers[item.url] : null
+          var latency = meta && meta.triggerAt ? Date.now() - meta.triggerAt : null
           if (cached && audioCtx !== null && audioCtx.state === 'running') {
             // 预热命中：直接排 AudioBuffer，省掉取回 + 解码，这一段是零等待的。
             var source = audioCtx.createBufferSource()
             source.buffer = cached
             source.connect(audioCtx.destination)
             source.onended = advance
+            probe('play', {
+              via: 'buffer',
+              id: item.id,
+              url: item.url,
+              score: item.score,
+              latencyMs: latency,
+            })
             source.start(audioCtx.currentTime + 0.01)
             streamSources.push(source)
             return
@@ -738,8 +920,33 @@ window.__ModuleLoader__.load({
           var element = new Audio(item.url)
           audio = element
           element.onended = advance
-          element.onerror = advance
-          element.play().catch(advance)
+          element.onerror = function () {
+            probe('play_error', {
+              via: 'audio',
+              id: item.id,
+              url: item.url,
+              error: 'audio-error',
+              code: element.error ? element.error.code : null,
+            })
+            advance()
+          }
+          element.play().then(function () {
+            probe('play', {
+              via: 'audio',
+              id: item.id,
+              url: item.url,
+              score: item.score,
+              latencyMs: latency,
+            })
+          }).catch(function (error) {
+            probe('play_error', {
+              via: 'audio',
+              id: item.id,
+              url: item.url,
+              error: String((error && error.message) || error).slice(0, 60),
+            })
+            advance()
+          })
           // 没预热到就顺手解码：同一条切片下次就是零等待。
           if (item.url && !clipBuffers[item.url]) warmClip(item.url)
         } else {
@@ -827,8 +1034,27 @@ window.__ModuleLoader__.load({
           if (token === playToken) playOne()
         }
         element.onended = advance
-        element.onerror = advance
-        element.play().catch(advance)
+        element.onerror = function () {
+          probe('play_error', {
+            via: 'fallback',
+            id: clip.id,
+            url: clip.url,
+            error: 'audio-error',
+            code: element.error ? element.error.code : null,
+          })
+          advance()
+        }
+        element.play().then(function () {
+          probe('play', { via: 'fallback', id: clip.id, url: clip.url })
+        }).catch(function (error) {
+          probe('play_error', {
+            via: 'fallback',
+            id: clip.id,
+            url: clip.url,
+            error: String((error && error.message) || error).slice(0, 60),
+          })
+          advance()
+        })
       })()
     }
 
@@ -977,14 +1203,40 @@ window.__ModuleLoader__.load({
       if (payload && typeof payload.intent === 'string') body.intent = payload.intent
       var seen = playedClipIds()
       if (seen.length > 0) body.seen = seen
+      var sentAt = probeNow()
+      var backLogged = false
+      function logBack(status, ok, extra) {
+        if (backLogged) return
+        backLogged = true
+        var detail = { status: status, ok: ok, ms: probeNow() - sentAt }
+        if (extra && typeof extra === 'object') {
+          for (var key in extra) {
+            if (Object.prototype.hasOwnProperty.call(extra, key)) detail[key] = extra[key]
+          }
+        }
+        probe('speak_back', detail)
+      }
+      probe('speak_sent', {
+        chars: body.text.length,
+        text: body.text.slice(0, 40),
+        intent: body.intent || null,
+        seen: seen.length,
+      })
       return fetch(SPEAK_URL, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(body),
       })
         .then(function (response) {
+          logBack(response.status, response.ok)
           if (!response.ok) throw new Error('HTTP ' + response.status)
           return response.json()
+        })
+        .catch(function (error) {
+          logBack('error', false, {
+            error: String((error && error.message) || error).slice(0, 60),
+          })
+          throw error
         })
     }
 
@@ -999,7 +1251,14 @@ window.__ModuleLoader__.load({
       })
         .then(function (plan) {
           var segments = plan && Array.isArray(plan.segments) ? plan.segments : []
+          var info = probePlan(plan)
           if (segments.length === 0) {
+            probe('silent', {
+              reason: info.matched === false ? 'match-false' : 'empty-segments',
+              stage: 'select',
+              segments: 0,
+              matched: info.matched,
+            })
             state.mode = 'silent'
             notify()
             return
@@ -1021,18 +1280,46 @@ window.__ModuleLoader__.load({
      * candidate 由 schedule() 给：快速通道给「已完整的前 N 句」，常规通道给整段。
      */
     function speakStable(candidate) {
-      if (!state.enabled) return
-      if (openingOnScreen()) return
+      if (!state.enabled) {
+        probe('silent', { reason: 'disabled', stage: 'stable' })
+        return
+      }
+      if (openingOnScreen()) {
+        probe('silent', { reason: 'opening', stage: 'stable' })
+        return
+      }
       if (Date.now() < quietUntil) {
+        probe('silent', {
+          reason: 'quiet-window',
+          stage: 'stable',
+          remainingMs: quietUntil - Date.now(),
+        })
         // 静默窗里冒出来的真实回复不该被永久吞掉：顺延到窗口结束再说。
         schedule()
         return
       }
-      if (!armed) return
+      if (!armed) {
+        probe('silent', {
+          reason: 'not-armed',
+          stage: 'stable',
+          chars: typeof candidate === 'string' ? candidate.length : 0,
+        })
+        return
+      }
       var text = typeof candidate === 'string' && candidate !== '' ? candidate : latestParagraph()
-      if (text === '' || text === lastSpoken) return
+      if (text === '' || text === lastSpoken) {
+        probe('silent', {
+          reason: text === '' ? 'no-text' : 'duplicate',
+          stage: 'stable',
+          chars: text.length,
+        })
+        return
+      }
       var key = digest(text)
-      if (spokenTexts[key]) return
+      if (spokenTexts[key]) {
+        probe('silent', { reason: 'already-spoken', stage: 'stable', chars: text.length })
+        return
+      }
       resetReplyWindow()
       lastSpoken = text
       rememberSpoken(key)
@@ -1042,13 +1329,35 @@ window.__ModuleLoader__.load({
       armed = false
       var cleanText = text.slice(0, 280)
       var triggerAt = Date.now()
+      probe('trigger', {
+        stage: typeof candidate === 'string' && candidate !== '' ? 'fast' : 'stable',
+        chars: cleanText.length,
+        digest: key,
+        sinceMutationMs: lastMutationAt > 0 ? triggerAt - lastMutationAt : null,
+      })
       // 等 /speak 的这几毫秒里，先把本地预判到的切片解码好（命中就是零等待）。
       predictWarm(cleanText)
       speakRequest({ text: cleanText })
         .then(function (plan) {
           var segments = plan && Array.isArray(plan.segments) ? plan.segments : []
+          var info = probePlan(plan)
           if (segments.length === 0) {
             // 什么都没播：把门还回去，仍然只出一条。
+            var reason = 'empty-segments'
+            if (info.technicalCount > 0 && info.technicalCount >= Number(info.stats.sentences)) {
+              reason = 'technical'
+            } else if (info.matched === false) {
+              reason = 'match-false'
+            }
+            probe('silent', {
+              reason: reason,
+              stage: 'speak-plan',
+              segments: 0,
+              matched: info.matched,
+              technical: info.technicalCount > 0,
+              technicalCount: info.technicalCount,
+              sentences: Number(info.stats.sentences) || 0,
+            })
             armed = true
             state.mode = 'silent'
             notify()
@@ -1056,10 +1365,18 @@ window.__ModuleLoader__.load({
             schedule()
             return
           }
-          if (openingOnScreen()) return
+          if (openingOnScreen()) {
+            probe('silent', { reason: 'opening', stage: 'speak-plan', segments: segments.length })
+            return
+          }
           playPlan(segments, { mode: plan.mode, tts: plan.tts, triggerAt: triggerAt })
         })
-        .catch(function () {
+        .catch(function (error) {
+          probe('silent', {
+            reason: 'request-error',
+            stage: 'speak-plan',
+            error: String((error && error.message) || error).slice(0, 60),
+          })
           // 请求失败和「没匹配上」一样把门还回去，别让这一条回复从此哑掉。
           armed = true
           state.mode = 'silent'
@@ -1132,6 +1449,10 @@ window.__ModuleLoader__.load({
       if (!state.enabled) return
       // 开屏动画期间一声不出：连待播的定时器也一并掐掉。
       if (openingOnScreen()) {
+        if (!openingProbeDone) {
+          openingProbeDone = true
+          probe('silent', { reason: 'opening', stage: 'mutate' })
+        }
         if (timer !== null) {
           clearTimeout(timer)
           timer = null
@@ -1142,13 +1463,25 @@ window.__ModuleLoader__.load({
         }
         return
       }
+      openingProbeDone = false
       // 整屏换内容（换工作区 / 历史回填）：把现有正文归档，不追着念。
+      // keepArm：这只是归档，不是换工作区；用户刚发消息时不能顺手关掉交互门。
       if (isReplay(records)) {
-        markBaseline()
+        markBaseline('replay', { keepArm: true })
         return
       }
       var text = latestParagraph()
       lastMutationAt = Date.now()
+      // 首次认出「另一条助手正文」时记一条；同一条回复继续变长不再打点。
+      if (text !== '' && (replyText === '' || !sameReply(replyText, text))) {
+        probe('reply_seen', {
+          chars: text.length,
+          digest: digest(text),
+          armed: armed,
+          quietLeftMs: Math.max(0, quietUntil - Date.now()),
+          snippet: text.slice(0, 40),
+        })
+      }
       // 只有「换成另一条正文」才闭嘴；同一条回复还在长时不能掐掉自己刚念的切片。
       if (state.speaking && text !== '' && !grewFrom(lastSpoken, text)) stopAudio()
       schedule(text)
@@ -1168,9 +1501,14 @@ window.__ModuleLoader__.load({
 
     /** MutationObserver 为主，容器还没出来（或被换掉）时用 POLL_MS 轮询兜底。 */
     function watch() {
+      probe('watch_start', {
+        opening: openingOnScreen(),
+        quietMs: BOOT_QUIET_MS,
+        container: centerCol() !== null,
+      })
       var observer = attachObserver()
       // 首屏上已经有的正文（欢迎语、历史消息）一律归档，不念。
-      markBaseline()
+      markBaseline('watch-start')
       var stopGesture = listenGesture()
       var pollId = setInterval(function () {
         var current = centerCol()
@@ -1178,14 +1516,14 @@ window.__ModuleLoader__.load({
         if (current !== null && current !== observedTarget) {
           if (observer !== null) observer.disconnect()
           observer = attachObserver()
-          markBaseline()
+          markBaseline('container-change')
           return
         }
         if (observer !== null) return
         var found = attachObserver()
         if (found !== null) {
           observer = found
-          markBaseline()
+          markBaseline('container-attach')
           clearInterval(pollId)
         }
       }, POLL_MS)

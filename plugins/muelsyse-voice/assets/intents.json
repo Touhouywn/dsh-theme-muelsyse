@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-10-29",
+  "updated": "2026-10-31",
   "note": "缪尔赛思语义检索意图表。index.js 只读这份文件：往 clipIds 里加切片即可扩充，不改代码。keywords 既是分类器的中文触发词，也是类内打分的关键词回扣。",
   "settings": {
     "minScore": 0.18,
@@ -55,11 +55,13 @@
         "こんばんは"
       ],
       "clipIds": [
+        "CN_300",
+        "CN_301",
         "CN_001",
         "CN_116",
         "CN_117"
       ],
-      "default": "CN_001",
+      "default": "CN_300",
       "fallback": null
     },
     "farewell": {
@@ -463,7 +465,11 @@
         "CN_026",
         "CN_027",
         "CN_037",
-        "CN_122"
+        "CN_122",
+        "CN_302",
+        "CN_303",
+        "CN_304",
+        "CN_305"
       ],
       "default": "CN_025",
       "fallback": null,

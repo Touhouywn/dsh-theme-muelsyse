@@ -1,0 +1,10 @@
+# Runtime leftovers that must never ship or be committed.
+.dsh-ops-update-*.lock
+*.lock
+*.bak
+*.bak-*
+_work/
+node_modules/
+__pycache__/
+Desktop.ini
+Thumbs.db

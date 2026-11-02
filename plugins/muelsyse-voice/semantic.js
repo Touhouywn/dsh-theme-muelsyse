@@ -7,12 +7,13 @@
  * Nothing here calls the translation API or the SoVITS server; the legacy
  * translate → synth pipeline only runs when /speak is called with synth:true.
  *
- * Degrade ladder per sentence: match → default/rotate → echo → silent.
+ * Degrade ladder per sentence: match → default/rotate → echo → filler-rotate.
  * The old ladder ended in "filler" and therefore played CN_025 for every
- * unmatched sentence. It no longer does: an unmatched sentence with no literal
- * echo stays silent, and a pool with several usable clips rotates through them
- * instead of replaying `default` forever. `filler` is a real intent now, not a
- * universal fallback (opt back in with settings.fillerOnMiss = true).
+ * unmatched sentence. The current one keeps filler only as a last-resort
+ * rotation: an unmatched non-technical sentence with no literal echo now
+ * rotates through the filler intent's clips (via: 'filler-rotate') instead of
+ * going silent or replaying `default` forever. Technical sentences stay silent.
+ * `filler` is still a real intent, not a universal fallback.
  *
  * Rotation memory (recentClips) lives in this module and is only touched by
  * buildSemanticPlan; the resolve* helpers stay pure functions that accept the
@@ -403,7 +404,11 @@ export function resolveSegment(bank, intents, sentence, cls, options = {}) {
   }
 }
 
-/** filler 专用轮换：只有明确命中 filler，或显式开启 fillerOnMiss 时才会走到这里。 */
+/**
+ * filler 专用轮换：明确命中 filler 时走类内检索；未命中（非技术句）时作为
+ * 最后一跳兜底。返回 via: 'filler'，buildSemanticPlan 的未命中分支会改标为
+ * 'filler-rotate'，以便和旧行为区分。
+ */
 export function resolveFiller(bank, intents, sentence, cls, used = new Set(), recent = new Set()) {
   const memory = asRecent(recent)
   const pool = []
@@ -489,8 +494,10 @@ function asUsed(value) {
  * 永远不产生 tts 段，也不碰翻译/合成模块。
  *
  * options.used      本回复已播切片（跨请求去重）
- * options.fillerOnMiss  true 时未命中回退到 filler 轮换；默认静默
  * options.recent    轮换记忆（测试可注入；默认用模块内记忆）
+ *
+ * 未命中（matched:false）且非技术句：先试字面回声，再退回 filler 轮换
+ * （via: 'filler-rotate'），不再静默。旧的 settings.fillerOnMiss 开关已不再需要。
  */
 export function buildSemanticPlan(bank, text, intents, options = {}) {
   const minScore = Number.isFinite(Number(options.minScore))
@@ -511,8 +518,6 @@ export function buildSemanticPlan(bank, text, intents, options = {}) {
   const maxSegments = Math.max(1, Math.min(6, Math.trunc(rawMax)))
   const route = typeof options.route === 'string' ? options.route : DEFAULT_ROUTE
   const forced = options.intent ? forcedIntent(options.intent, intents) : null
-  const fillerOnMiss = options.fillerOnMiss === true ||
-    intents?.settings?.fillerOnMiss === true
   // 轮换记忆：拷贝一份本地集合，本计划内新播的切片立刻算「近期」，跨计划则写回模块记忆。
   const recent = new Set(options.recent === undefined ? recentClips : asRecent(options.recent))
   const sentences = splitSentences(text)
@@ -527,6 +532,7 @@ export function buildSemanticPlan(bank, text, intents, options = {}) {
     default: 0,
     rotate: 0,
     filler: 0,
+    fillerRotate: 0,
     echo: 0,
     silent: 0,
     skippedTechnical: 0,
@@ -570,9 +576,11 @@ export function buildSemanticPlan(bank, text, intents, options = {}) {
     if (pick === null && intents && cls.matched) {
       pick = resolveSegment(bank, intents, sentence, cls, { minScore, used, recent })
     }
-    if (pick === null && intents && fillerOnMiss && !cls.matched) {
-      // 显式开启的老行为：未命中 → filler 轮换（不再固定 CN_025）。
+    if (pick === null && intents && !cls.matched) {
+      // 方案 A：未命中且没有字面回声 → 不再静默，从 filler 池里轮换一条。
+      // 技术句在前面就被拦掉了；used / recent 保证本回复和近期都不重播同一条。
       pick = resolveFiller(bank, intents, sentence, cls, used, recent)
+      if (pick !== null) pick.via = 'filler-rotate'
     }
     if (pick === null && !intents) {
       // intents.json 缺失时仍不出翻译：只做字面回声，阈值放宽到 0.45。
@@ -592,7 +600,8 @@ export function buildSemanticPlan(bank, text, intents, options = {}) {
     recent.add(pick.clip.id)
     rememberClip(pick.clip.id)
     stats.segments += 1
-    stats[pick.via] += 1
+    // via 用连字符（filler-rotate），stats 的键用驼峰 fillerRotate。
+    stats[pick.via === 'filler-rotate' ? 'fillerRotate' : pick.via] += 1
     const pub = publicClip(pick.clip, route)
     const label = intents?.intents?.[pick.intent]?.label || pick.intent
     segments.push({
