@@ -1,26 +1,35 @@
 # Muelsyse · 生态科 — theme pack installer for DeepSeek Harness (Windows).
+# Pack version: v0.1.0
 #
 #   pwsh -NoProfile -File .\install.ps1
 #   pwsh -NoProfile -File .\install.ps1 -Profile other
 #   pwsh -NoProfile -File .\install.ps1 -Purge
 #   pwsh -NoProfile -File .\install.ps1 -EnableLegacyHub
+#   pwsh -NoProfile -File .\install.ps1 -SkipPet -NoShortcut
 #
 # What it does, in order:
 #   1. copies theme/muelsyse and the three plugins into %DSH_HOME%;
 #   2. creates the profile's node_modules junctions;
 #   3. appends the theme / voice / persona insert rows to cordis.patch.yml,
-#      only when that id is not already present (idempotent).
+#      only when that id is not already present (idempotent);
+#   4. installs the desktop pet exe to %APPDATA%\muelsyse-pet and drops an
+#      optional desktop shortcut for it.
 #
 # The profile is watched by HMR. If the GUI does not repaint, reload the page
 # or fully restart DSH. The hub package is copied for compatibility, but is
 # not inserted by default: theme 0.1.0 already ships the sidebar console.
+# The pet is a standalone app: it is installed outside %DSH_HOME% and is not
+# wired into cordis.patch.yml.
 
 [CmdletBinding()]
 param(
   [string]$Profile = 'desktop',
   [string]$DshHome = $(if ($env:DSH_HOME) { $env:DSH_HOME } else { Join-Path $env:USERPROFILE '.dsh' }),
+  [string]$PetDir = $(if ($env:MUELSYSE_PET_DIR) { $env:MUELSYSE_PET_DIR } else { Join-Path $env:APPDATA 'muelsyse-pet' }),
   [switch]$Purge,
-  [switch]$EnableLegacyHub
+  [switch]$EnableLegacyHub,
+  [switch]$SkipPet,
+  [switch]$NoShortcut
 )
 
 $ErrorActionPreference = 'Stop'
@@ -28,6 +37,13 @@ $source = (Resolve-Path -LiteralPath $PSScriptRoot).Path
 $profileDir = Join-Path $DshHome "profiles\$Profile"
 $patch = Join-Path $profileDir 'cordis.patch.yml'
 $utf8 = New-Object System.Text.UTF8Encoding($false)
+
+# Windows PowerShell 5.1 decodes BOM-less UTF-8 scripts as ANSI, which would
+# turn the Chinese comments written into cordis.patch.yml into mojibake.
+if ($PSVersionTable.PSVersion.Major -lt 6) {
+  Write-Host 'warn     -> Windows PowerShell 5.1 detected; install with pwsh 7:' -ForegroundColor Yellow
+  Write-Host '            pwsh -NoProfile -File .\install.ps1' -ForegroundColor Yellow
+}
 
 function Repair-Utf8Bom([string]$Path) {
   if (-not (Test-Path -LiteralPath $Path)) { return }
@@ -51,6 +67,27 @@ function Remove-LinkOrDirectory([string]$Path) {
   else {
     Remove-Item -LiteralPath $Path -Recurse -Force
   }
+}
+
+function Get-DesktopDir {
+  try {
+    $d = [Environment]::GetFolderPath('Desktop')
+    if ($d -and (Test-Path -LiteralPath $d)) { return $d }
+  }
+  catch { }
+  $d = Join-Path $env:USERPROFILE 'Desktop'
+  if (Test-Path -LiteralPath $d) { return $d }
+  return $null
+}
+
+function New-Shortcut([string]$LinkPath, [string]$Target, [string]$WorkingDir, [string]$Description) {
+  $shell = New-Object -ComObject WScript.Shell
+  $sc = $shell.CreateShortcut($LinkPath)
+  $sc.TargetPath = $Target
+  $sc.WorkingDirectory = $WorkingDir
+  $sc.IconLocation = "$Target,0"
+  $sc.Description = $Description
+  $sc.Save()
 }
 
 if (-not (Test-Path -LiteralPath $profileDir)) {
@@ -175,7 +212,51 @@ foreach ($id in $blocks.Keys) {
 }
 
 Write-Host ''
+if ($SkipPet) {
+  Write-Host 'pet      -> skipped (-SkipPet)' -ForegroundColor Yellow
+}
+else {
+  $petSrc = Join-Path $source 'pet\dsh-pet-standalone-webm-chat.exe'
+  if (-not (Test-Path -LiteralPath $petSrc)) {
+    Write-Host "pet      -> source missing, skipped: $petSrc" -ForegroundColor Yellow
+    Write-Host '            (re-download the pack, the exe is a binary asset)' -ForegroundColor Yellow
+  }
+  else {
+    New-Item -ItemType Directory -Force -Path $PetDir | Out-Null
+    $petExe = Join-Path $PetDir 'dsh-pet-standalone-webm-chat.exe'
+    Copy-Item -LiteralPath $petSrc -Destination $petExe -Force
+    $petMb = [math]::Round((Get-Item -LiteralPath $petExe).Length / 1MB, 2)
+    Write-Host "pet      -> $petExe ($petMb MiB)" -ForegroundColor Green
+
+    if ($NoShortcut) {
+      Write-Host 'shortcut -> skipped (-NoShortcut)' -ForegroundColor Yellow
+    }
+    else {
+      $desktop = Get-DesktopDir
+      if ($null -eq $desktop) {
+        Write-Host 'shortcut -> desktop folder not found, skipped' -ForegroundColor Yellow
+      }
+      else {
+        $lnk = Join-Path $desktop 'Muelsyse Pet.lnk'
+        try {
+          New-Shortcut -LinkPath $lnk -Target $petExe -WorkingDir $PetDir -Description 'Muelsyse desktop pet'
+          Write-Host "shortcut -> $lnk" -ForegroundColor Green
+        }
+        catch {
+          Write-Host "shortcut -> failed ($($_.Exception.Message)); the exe is installed, launch it directly" -ForegroundColor Yellow
+        }
+      }
+    }
+  }
+}
+
+Write-Host ''
 Write-Host 'Done. Theme, voice and persona are installed for profile:' -ForegroundColor Cyan
 Write-Host "  $Profile" -ForegroundColor Cyan
 Write-Host 'The configuration layer is hot-reloaded. If the Web GUI does not' -ForegroundColor Cyan
 Write-Host 'repaint, reload the page or fully restart DSH.' -ForegroundColor Cyan
+if (-not $SkipPet) {
+  Write-Host ''
+  Write-Host 'Desktop pet: launch "Muelsyse Pet" from the desktop, or run' -ForegroundColor Cyan
+  Write-Host "  $PetDir\dsh-pet-standalone-webm-chat.exe" -ForegroundColor Cyan
+}

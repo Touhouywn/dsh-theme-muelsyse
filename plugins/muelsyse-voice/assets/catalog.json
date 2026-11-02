@@ -708,7 +708,7 @@
       "file": "clips/CN_116.ogg",
       "text": "こんにちは",
       "asrText": "こんにちは",
-      "cnText": "你好",
+      "cnText": "こんにちは",
       "duration": 1.71,
       "version": "synth1"
     },
@@ -1035,6 +1035,78 @@
       "cnText": "快点走吧。",
       "duration": 2.12,
       "version": "synth2"
+    },
+    {
+      "id": "CN_300",
+      "file": "clips/CN_300.ogg",
+      "text": "ciallo",
+      "asrText": "ciallo",
+      "cnText": "你好",
+      "duration": 0.78,
+      "tags": [
+        "SYNTH"
+      ],
+      "version": "synth3"
+    },
+    {
+      "id": "CN_301",
+      "file": "clips/CN_301.ogg",
+      "text": "ちゃお",
+      "asrText": "ちゃう",
+      "cnText": "ciallo～（轻快的招呼）",
+      "duration": 1.5,
+      "tags": [
+        "SYNTH"
+      ],
+      "version": "synth3"
+    },
+    {
+      "id": "CN_302",
+      "file": "clips/CN_302.ogg",
+      "text": "うん。",
+      "asrText": "うん",
+      "cnText": "嗯。",
+      "duration": 0.78,
+      "tags": [
+        "SYNTH"
+      ],
+      "version": "synth3"
+    },
+    {
+      "id": "CN_303",
+      "file": "clips/CN_303.ogg",
+      "text": "そうだね。",
+      "asrText": "そうだね",
+      "cnText": "这样啊。",
+      "duration": 1.18,
+      "tags": [
+        "SYNTH"
+      ],
+      "version": "synth3"
+    },
+    {
+      "id": "CN_304",
+      "file": "clips/CN_304.ogg",
+      "text": "なるほど。",
+      "asrText": "なるほど",
+      "cnText": "原来如此。",
+      "duration": 1.22,
+      "tags": [
+        "SYNTH"
+      ],
+      "version": "synth3"
+    },
+    {
+      "id": "CN_305",
+      "file": "clips/CN_305.ogg",
+      "text": "そうなんだ。",
+      "asrText": "そうなんだ",
+      "cnText": "是啊，是这样啊。",
+      "duration": 1.3,
+      "tags": [
+        "SYNTH"
+      ],
+      "version": "synth3"
     }
   ]
 }
