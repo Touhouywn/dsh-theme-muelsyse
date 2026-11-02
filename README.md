@@ -169,7 +169,7 @@ pwsh -NoProfile -File .\install.ps1 -DshHome D:\dsh-home -PetDir D:\tools\muelsy
 
 只有显式 `synth: true` 才会用到。环境包（Python + GPT-SoVITS 权重）**不随本包分发**，请从网盘下载：
 
-- **网盘链接：待补（占位）** `[[MUELSYSE_SOVITS_NETDISK_URL]`](https://pan.quark.cn/s/7331406b7b40?pwd=ycKX)
+- **网盘链接**：[夸克网盘](https://pan.quark.cn/s/7331406b7b40?pwd=ycKX)（提取码 ycKX）
 - 建议解压到 `%USERPROFILE%\muelsyse-sovits\GPT-SoVITS`，或设置 `MUELSYSE_SOVITS_ROOT`。
 
 翻译 API key 只放在环境变量里，**不要写进 README、patch 或仓库**：
@@ -270,7 +270,7 @@ Web GUI 起来后，把 `<port>` 换成实际端口：
 
 ## 8. 网盘与素材占位
 
-- SoVITS 环境包：**待补** `[MUELSYSE_SOVITS_NETDISK_URL]`
+- SoVITS 环境包：[夸克网盘](https://pan.quark.cn/s/7331406b7b40?pwd=ycKX)（提取码 ycKX）
 - 可选语音素材/模型：不随包分发，按需从同一网盘获取
 - 素材授权说明：见 `theme/muelsyse/CREDITS.md`、`PROVENANCE.md`、`LICENSE`；公开分发前请重新清权
 
